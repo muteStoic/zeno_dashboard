@@ -8,9 +8,16 @@ conn = st.connection("google_service_account", type = GSheetsConnection)
 
 df = conn.read(ttl="1m")
 
+def update_sheet() :
+    conn.update(worksheet = "Sheet1", data = data_edit)
+
+
 data_edit = st.data_editor(df, key="my_key")
 st.write(st.session_state["my_key"])
 st.write(data_edit)
+
+st.button('update the sheet', on_click = update_sheet)
+
 
 
 
