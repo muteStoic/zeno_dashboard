@@ -10,5 +10,7 @@ st.title('AI Task Tracker')
 st.dataframe(df)
 st.data_editor(df)
 st.write('Task Name')
+taskName = st.text_input('')
 
 st.write('role')
+roleName = st.text_input('')
