@@ -8,8 +8,9 @@ conn = st.connection("google_service_account", type = GSheetsConnection)
 
 df = conn.read(ttl="1m")
 
-st.data_editor(df, key="my_key")
+data_edit = st.data_editor(df, key="my_key")
 st.write(st.session_state["my_key"])
+st.write(data_edit)
 
 
 
