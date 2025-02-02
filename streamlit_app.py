@@ -14,7 +14,7 @@ def add_task():
         new_data = pd.DataFrame([[task_name, role]], columns=["Task Name", "Role"])
         st.dataframe(new_data)
         # Append the new data to the Google Sheets
-        conn.update(new_data, append=True)
+        conn.update(worksheet ="Sheet1", data = new_data)
 
         
 
