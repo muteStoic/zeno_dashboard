@@ -7,8 +7,8 @@ st.cache_resource.clear()
 df = conn.read(ttl="5m")
 
 def add_task():
-    task_name = st.session_state.taskName
-    role = st.session_state.role
+    task_name = st.session_state.taskName2
+    role = st.session_state.role2
     
     if task_name and role:
         new_data = pd.DataFrame([[task_name, role]], columns=["Task Name", "Role"])
