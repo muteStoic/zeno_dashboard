@@ -6,5 +6,5 @@ conn = st.connection("google_service_account", type = GSheetsConnection)
 
 
 
-
 st.title('AI Task Tracker')
+st.dataframe(conn)
