@@ -9,7 +9,7 @@ st.write(service_account_information)
 #authenticate
 credentials = Credentials.from_service_account_info(service_account_information)
 gc = gspread.authorize(credentials)
-
+st.write(gc)
 #connect to the google sheet
 sheet_url = "https://docs.google.com/spreadsheets/d/1sB1IGUYyNANw_WOH4kjqHDL60Exg1ocSX4arN-fE3FY/edit"
 sheet = gc.open_by_url(sheet_url).sheet1
