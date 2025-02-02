@@ -13,7 +13,7 @@ def add_task():
     role = st.session_state.role2
     
     if task_name and role:
-        new_data = pd.DataFrame([[task_name, role]], columns=["Task Name", "Role"])
+        new_data = pd.DataFrame([[task_name, role]], columns=["Task Name", "role"])
         new = pd.concat([df,new_data])
         st.dataframe(new)
         # Append the new data to the Google Sheets
