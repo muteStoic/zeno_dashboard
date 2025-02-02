@@ -8,3 +8,7 @@ df = conn.read(ttl="5m")
 
 st.title('AI Task Tracker')
 st.dataframe(df)
+st.data_editor(df)
+st.write('Task Name')
+
+st.write('role')
