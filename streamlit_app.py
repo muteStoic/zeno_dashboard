@@ -19,7 +19,7 @@ def add_task():
         
 
         # Reload the dataframe to reflect the new row
-        st.experimental_rerun()
+        st.rerun()
 
 
 
