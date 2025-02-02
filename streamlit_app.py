@@ -37,7 +37,7 @@ with st.form("update data"):
     st.write("form section to put in information")
     taskName2 = st.text_input('Task Name', key = "taskName2")
     role2 = st.text_input('role' , key = "role2")
-    st.form_submit_button("add")
+    st.form_submit_button("add", on_click = add_task)
 
 st.write(taskName2)
 st.write(role2)
