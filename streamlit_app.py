@@ -8,6 +8,11 @@ conn = st.connection("google_service_account", type = GSheetsConnection)
 
 df = conn.read(ttl="1m")
 
+st.data_editor(df, key="my_key")
+st.write(st.session_state["my_key"])
+
+
+
 def add_task():
     task_name = st.session_state.taskName2
     role = st.session_state.role2
