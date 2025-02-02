@@ -5,7 +5,7 @@ import gspread
 
 #load secrets
 service_account_information = st.secrets["google_service_account"]
-
+st.write(service_account_information)
 #authenticate
 credentials = Credentials.from_service_account_info(service_account_information)
 gc = gspread.authorize(credentials)
