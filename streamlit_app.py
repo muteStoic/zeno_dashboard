@@ -7,7 +7,7 @@ conn = st.connection("google_service_account", type = GSheetsConnection)
 df = conn.read(ttl="5m")
 
 def add_task():
-    task_name = st.session_state.task_name
+    task_name = st.session_state.taskName
     role = st.session_state.role
     
     if task_name and role:
@@ -28,5 +28,5 @@ st.write('Task Name')
 taskName = st.text_input('Task Name')
 
 st.write('role')
-Role = st.text_input('Role')
+role = st.text_input('Role')
 st.button('add', on_click = add_task)
