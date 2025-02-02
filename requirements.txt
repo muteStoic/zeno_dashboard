@@ -3,3 +3,4 @@ pandas
 google-auth
 google-auth-oauthlib
 gspread
+st-gsheets-connection
