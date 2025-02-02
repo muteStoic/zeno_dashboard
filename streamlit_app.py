@@ -6,7 +6,7 @@ from streamlit_gsheets import GSheetsConnection
 st.cache_resource.clear()
 conn = st.connection("google_service_account", type = GSheetsConnection)
 
-df = conn.read(ttl="5m")
+df = conn.read(ttl="1m")
 
 def add_task():
     task_name = st.session_state.taskName2
