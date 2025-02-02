@@ -14,7 +14,7 @@ def add_task():
     
     if task_name and role:
         new_data = pd.DataFrame([[task_name, role]], columns=["Task Name", "Role"])
-        new = df.append(new_data)
+        new = pd.concat([df,new_data])
         st.dataframe(new)
         # Append the new data to the Google Sheets
         #conn.update(worksheet ="Sheet1", data = new_data)
@@ -28,7 +28,7 @@ def add_task():
 
 st.title('AI Task Tracker')
 st.dataframe(df)
-st.data_editor(df)
+#st.data_editor(df)
 st.write('Task Name')
 taskName = st.text_input('Task Name', key ="taskName" )
 
