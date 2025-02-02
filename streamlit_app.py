@@ -7,7 +7,7 @@ import gspread
 service_account_information = st.secrets["google_service_account"]
 
 #authenticate
-credentials = Credentials.from_service_info(service_account_information)
+credentials = Credentials.from_service_account_info(service_account_information)
 gc = gspread.authorize(credentials)
 
 #connect to the google sheet
