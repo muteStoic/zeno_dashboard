@@ -12,7 +12,7 @@ def update_sheet() :
     conn.update(worksheet = "Sheet1", data = data_edit)
 
 
-data_edit = st.data_editor(df, key="my_key")
+data_edit = st.data_editor(df, key="my_key", num_rows = "dynamic" )
 st.write(st.session_state["my_key"])
 st.write(data_edit)
 
