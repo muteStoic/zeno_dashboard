@@ -78,7 +78,7 @@ with st.form("update data"):
 data_edit = st.data_editor(df, key="my_key", num_rows = "dynamic" )
 #*(used for testing)st.write(st.session_state["my_key"])
 #//displaying the data that has been modified from the data editor section
-st.write(data_edit)
+#st.write(data_edit)
 
 
 st.write(taskName2)
