@@ -45,7 +45,7 @@ def add_task():
         conn.update(worksheet ="Sheet1", data = new)
 
         
-
+        st.cache_resource.clear()
         # Reload the dataframe to reflect the new row
         st.rerun()
 
@@ -53,19 +53,8 @@ def add_task():
 
 
 
-#whole section below is the old version because just read thru the forum that it its best to use form rather than individual elements because if not it will rerun the whole program oncea button has been click.
-"""
 st.title('AI Task Tracker')
-st.dataframe(df)
-#st.data_editor(df)
-st.write('Task Name')
-taskName = st.text_input('Task Name', key ="taskName" )
 
-st.write('role')
-role = st.text_input('Role', key ="role")
-st.button('add', on_click = add_task)
-
-"""
 #//the form section to show the user on what they need to put in so that it can be included into the new line. the form is used so that any changes made here will not rerun the whole program.
 with st.form("update data"):
     st.write("form section to put in information")
