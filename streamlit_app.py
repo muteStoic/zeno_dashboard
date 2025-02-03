@@ -18,8 +18,6 @@ def update_sheet() :
     conn.update(worksheet = "Sheet1", data = data_edit)
 
 
-#//streamlit button to run the function of updating the google sheet with the new data table
-st.button('update the sheet', on_click = update_sheet)
 
 
 
@@ -66,9 +64,11 @@ with st.form("update data"):
 #//using the streamlit data editor to displa the information from the sheet that is stored in "df" variable. dont know what is the key and num_rows is about.
 data_edit = st.data_editor(df, key="my_key", num_rows = "dynamic" )
 #*(used for testing)st.write(st.session_state["my_key"])
-#//displaying the data that has been modified from the data editor section
-#st.write(data_edit)
+
+#//streamlit button to run the function of updating the google sheet with the new data table
+st.button('update the sheet', on_click = update_sheet)
 
 
-st.write(taskName2)
-st.write(role2)
+
+#st.write(taskName2)
+#st.write(role2)
