@@ -73,11 +73,12 @@ with st.form("update data"):
     role2 = st.text_input('role' , key = "role2")
     st.form_submit_button("add", on_click = add_task)
 
-    #//using the streamlit data editor to displa the information from the sheet that is stored in "df" variable. dont know what is the key and num_rows is about.
-    data_edit = st.data_editor(df, key="my_key", num_rows = "dynamic" )
-    #*(used for testing)st.write(st.session_state["my_key"])
-    #//displaying the data that has been modified from the data editor section
-    st.write(data_edit)
+    
+#//using the streamlit data editor to displa the information from the sheet that is stored in "df" variable. dont know what is the key and num_rows is about.
+data_edit = st.data_editor(df, key="my_key", num_rows = "dynamic" )
+#*(used for testing)st.write(st.session_state["my_key"])
+#//displaying the data that has been modified from the data editor section
+st.write(data_edit)
 
 
 st.write(taskName2)
