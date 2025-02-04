@@ -9,7 +9,7 @@ st.cache_resource.clear()
 
 
 #//initialize the connection that is refered in the secrets toml
-conn = st.connection("ghsheetsjob", type = GSheetsConnection)
+conn = st.connection("google_service_accountgh", type = GSheetsConnection)
 
 #//create variable that capture the information in the first sheet of the gsheetinto variable df
 df = conn.read(ttl="1m")
