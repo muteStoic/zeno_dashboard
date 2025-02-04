@@ -1,7 +1,11 @@
 import streamlit as st
 import pandas as pd
 from streamlit_gsheets import GSheetsConnection
+from openai import OpenAI
 
+
+
+client = OpenAI()
 
 #//remove all the browser cache
 st.cache_resource.clear()
@@ -78,3 +82,8 @@ st.button('update the sheet', on_click = update_sheet)
 
 #st.write(taskName2)
 #st.write(role2)
+
+files = st.fileuploader("upload jpg image")
+
+st.write(files)
+
