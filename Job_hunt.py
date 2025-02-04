@@ -15,7 +15,7 @@ df_job = conn.read(worksheet = "Sheet2", ttl="1m")
 
 #//function to insert new data into the spreadsheet that is link to the "update button"
 def update_sheet() :
-    #update all the data in the Sheet titled "Sheet1" with the new data from "data_edit" variable
+    #update all the data in the Sheet titled "Sheet2" with the new data from "data_edit" variable
     conn.update(worksheet = "Sheet2", data = data_edit)
 
 
@@ -41,7 +41,7 @@ def add_task():
 
         #*(used for testing)st.dataframe(new)
         # Append the new data to the Google Sheets
-        conn.update(worksheet ="Sheet1", data = new)
+        conn.update(worksheet ="Sheet2", data = new)
 
         
         st.cache_resource.clear()
@@ -63,7 +63,7 @@ with st.form("update data"):
 
     
 #//using the streamlit data editor to displa the information from the sheet that is stored in "df" variable. dont know what is the key and num_rows is about.
-data_edit = st.data_editor(df_job, key="my_key", num_rows = "dynamic" )
+data_edit = st.data_editor(df_job, use_container_width = True, key="my_key", num_rows = "dynamic" )
 #*(used for testing)st.write(st.session_state["my_key"])
 
 #//streamlit button to run the function of updating the google sheet with the new data table
