@@ -99,3 +99,5 @@ if uploaded_file is not None:
     # Can be used wherever a "file-like" object is accepted:
     dataframe = pd.read_csv(uploaded_file)
     st.write(dataframe)
+
+    st.image("https://drive.google.com/file/d/18aK_yKOSJA4DuhI_v860_ymIGsSrNCg3/view?usp=sharing")
