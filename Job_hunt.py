@@ -46,7 +46,7 @@ def add_task():
 
         
         st.cache_resource.clear()
-        df_job = conn.read(worksheet = "Sheet2")
+        
 
         # Reload the dataframe to reflect the new row
         st.rerun()
