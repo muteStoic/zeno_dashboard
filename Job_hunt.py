@@ -99,7 +99,7 @@ def encode_image(image_path):
 
 
 def chat_with_openai_text_and_image():
-
+    st.write(uploaded_file1)
     image_path = uploaded_file1.type
     st.write(image_path)
 
