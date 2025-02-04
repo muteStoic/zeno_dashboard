@@ -7,7 +7,7 @@ from streamlit_gsheets import GSheetsConnection
 st.cache_resource.clear()
 
 #//initialize the connection that is refered in the secrets toml
-conn = st.connection("google_service_account2", type = GSheetsConnection)
+conn = st.connection("google_service_account", type = GSheetsConnection)
 
 #//create variable that capture the information in the first sheet of the gsheetinto variable df
 df_job = conn.read(worksheet = "Sheet1", ttl="1m")
