@@ -3,6 +3,7 @@ import pandas as pd
 from streamlit_gsheets import GSheetsConnection
 from io import StringIO
 import openai
+import base64
 
 
 assistandid = "asst_Tot8FMaAwWRmOAng4D6z3x66"
@@ -87,8 +88,24 @@ st.button('update the sheet', on_click = update_sheet)
 ################################################################################
 #def run_open_AI():
 
-def chat_with_openai_text_and_image():
+
+def encode_image(image_path):
     
+
+
+    with open(image_path, "rb") as image_file:
+        return base64.b64encode(image_file.read()).decode("utf-8")
+
+
+
+def chat_with_openai_text_and_image():
+
+    image_path = uploaded_file1
+
+    # Getting the Base64 string
+    base64_image = encode_image(image_path)
+    
+    """
     text_prompt = "what can you tell about this image"
     image_path = uploaded_file1
     thread = client.beta.threads.create()
@@ -119,6 +136,8 @@ def chat_with_openai_text_and_image():
         st.write(st.session_state.ai_generate)
 
     return
+
+    """
 
     """
     response = openai.ChatCompletion.create(
