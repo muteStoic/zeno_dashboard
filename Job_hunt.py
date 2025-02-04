@@ -101,4 +101,4 @@ if uploaded_file is not None:
     st.write(dataframe)
 
     
-st.image("https://drive.google.com/file/d/18aK_yKOSJA4DuhI_v860_ymIGsSrNCg3/view?usp=sharing")
+st.image("https://drive.google.com/file/d/18aK_yKOSJA4DuhI_v860_ymIGsSrNCg3/")
