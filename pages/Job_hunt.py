@@ -7,7 +7,7 @@ job_hunt_page = st.Page("Job_hunt.py", title = "Job hunting")
 page_3 = st.Page("Page_3.py", title = "Blank empty page")
 
 sideBar = st.navigation([job_hunt_page, page_3])
-
+sideBar.run()
 #//remove all the browser cache
 st.cache_resource.clear()
 
