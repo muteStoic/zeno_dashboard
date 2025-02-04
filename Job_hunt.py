@@ -12,7 +12,7 @@ assistandid = "asst_Tot8FMaAwWRmOAng4D6z3x66"
 
 client = openai
 #//remove all the browser cache
-st.cache_resource.clear()
+#st.cache_resource.clear()
 
 #//initialize the connection that is refered in the secrets toml
 conn = st.connection("google_service_account", type = GSheetsConnection)
@@ -219,6 +219,9 @@ def load_image(uploaded_file):
 
     #dataframe = pd.DataFrame(uploaded_file1)
     #st.write(dataframe)
+
+    #upload_url: "/_stcore/upload_file/29b2669b-cbba-4448-a030-709a273e4da2/463503d4-bb78-4035-98a7-ab369f0be6f5"
+
 
 uploaded_file = st.file_uploader("1111Upload your image (JPEG, PNG, etc.)", type=["jpg", "jpeg", "png"])
 
