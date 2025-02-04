@@ -51,7 +51,7 @@ def add_task():
 
 
 
-st.title('AI Task Tracker')
+st.title('AI Task Tracker!!')
 
 #//the form section to show the user on what they need to put in so that it can be included into the new line. the form is used so that any changes made here will not rerun the whole program.
 with st.form("update data"):
