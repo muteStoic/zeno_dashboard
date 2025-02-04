@@ -210,7 +210,7 @@ def load_image(uploaded_file):
     return None
 
 
-#uploaded_file1 = st.file_uploader("Choose a file")
+uploaded_file1 = st.file_uploader("Choose a file")
 if uploaded_file1 is not None:
     # To read file as bytes:
     bytes_data = uploaded_file1.getvalue()
@@ -219,7 +219,7 @@ if uploaded_file1 is not None:
     #dataframe = pd.DataFrame(uploaded_file1)
     #st.write(dataframe)
 
-uploaded_file = st.file_uploader("Upload your image (JPEG, PNG, etc.)", type=["jpg", "jpeg", "png"])
+uploaded_file = st.file_uploader("1111Upload your image (JPEG, PNG, etc.)", type=["jpg", "jpeg", "png"])
 
 if uploaded_file is not None:
     # Call the cached function
