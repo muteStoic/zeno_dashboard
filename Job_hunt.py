@@ -98,7 +98,8 @@ def chat_with_openai_text_and_image():
     message = client.beta.threads.messages.create(
     thread_id=st.session_state.threadid,
     role="user",
-    content= "tell me something cool"
+    content= "",
+    filename = image_path
     )
 
     run = client.beta.threads.runs.create_and_poll(
