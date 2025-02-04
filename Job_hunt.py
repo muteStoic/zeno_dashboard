@@ -84,7 +84,7 @@ st.button('update the sheet', on_click = update_sheet)
 
 def add_image():
     new_data = pd.DataFrame([[uploaded_file1, uploaded_file1]], columns=["Job Title", "Company Name"])
-    st.dataframe(new_data)
+    st.write(new_data)
     
 
 
@@ -97,10 +97,10 @@ st.button("upload image to sheet", on_click = add_image)
 if uploaded_file1 is not None:
     # To read file as bytes:
     bytes_data = uploaded_file1.getvalue()
-    st.write(bytes_data)
+    #st.write(bytes_data)
 
-    dataframe = pd.DataFrame(uploaded_file1)
-    st.write(dataframe)
+    #dataframe = pd.DataFrame(uploaded_file1)
+    #st.write(dataframe)
 
 
 
