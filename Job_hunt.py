@@ -10,7 +10,7 @@ st.cache_resource.clear()
 conn = st.connection("google_service_account", type = GSheetsConnection)
 
 #//create variable that capture the information in the first sheet of the gsheetinto variable df
-df_job = conn.read(worksheet = "Sheet2", ttl="1m")
+df_job = conn.read(worksheet = "Sheet2")
 
 
 #//function to insert new data into the spreadsheet that is link to the "update button"
