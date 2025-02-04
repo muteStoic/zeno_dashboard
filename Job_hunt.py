@@ -1,11 +1,9 @@
 import streamlit as st
 import pandas as pd
 from streamlit_gsheets import GSheetsConnection
-from openai import OpenAI
 
 
 
-client = OpenAI()
 
 #//remove all the browser cache
 st.cache_resource.clear()
