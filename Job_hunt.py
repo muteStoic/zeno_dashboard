@@ -2,11 +2,11 @@ import streamlit as st
 import pandas as pd
 from streamlit_gsheets import GSheetsConnection
 from io import StringIO
-from openai import OpenAI
+import openai
 
 
 assistandid = "asst_Tot8FMaAwWRmOAng4D6z3x66"
-client = OpenAI()
+
 
 #//remove all the browser cache
 st.cache_resource.clear()
@@ -96,7 +96,7 @@ def chat_with_openai_text_and_image():
     #with open(image_path, "rb") as image_file:
     #    image_bytes = image_file.read()
 
-    response = client.ChatCompletion.create(
+    response = openai.ChatCompletion.create(
         model="gpt-4",
         messages=[
             {"role": "system", "content": "You are a helpful assistant."},
@@ -117,28 +117,6 @@ def chat_with_openai_text_and_image():
         #print(run.status)
 
     
-
-    if run.status == 'completed': 
-        messages = client.beta.threads.messages.list(thread_id=st.session_state.threadid)
-        print(messages)
-
-        last_message = messages.data[0]
-        response = last_message.content[0].text.value
-        print(response)
-        st.session_state.article_generated.append(response)
-        st.session_state.cur_article = response
-        #st.session_state.cur_article = '"""' + st.session_state.cur_article + '"""'
-        st.session_state.ai_generate = response
-        #ai_generate.append(response)
-        
-
-    else:
-        
-        print(run.status)
-        st.toast("Generating Failed. Regenerating Article")
-
-            
-        run_open_AI()
 
 
 st.button("normal button", on_click = chat_with_openai_text_and_image)
