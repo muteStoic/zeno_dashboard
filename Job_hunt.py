@@ -113,9 +113,6 @@ def chat_with_openai_text_and_image():
         last_message = messages.data[0]
         response = last_message.content[0].text.value
         print(response)
-        st.session_state.article_generated.append(response)
-        st.session_state.cur_article = response
-        #st.session_state.cur_article = '"""' + st.session_state.cur_article + '"""'
         st.session_state.ai_generate = response
         #ai_generate.append(response)
         st.write(st.session_state.ai_generate)
