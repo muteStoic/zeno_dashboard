@@ -102,7 +102,7 @@ def chat_with_openai_text_and_image():
     st.write(uploaded_file1)
     image_path = uploaded_file1._file_urls.upload_url
     st.session_state.fileurl = "https://zenosyne.info/wp-content/uploads/2024/06/palworld-all-fire-pals-in-paldeck.webp"
-    st.write(image_path)
+    st.write(st.session_state.fileurl)
 
     # Getting the Base64 string
     base64_image = encode_image(st.session_state.fileurl)
