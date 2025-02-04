@@ -211,9 +211,9 @@ def load_image(uploaded_file):
 
 
 #uploaded_file1 = st.file_uploader("Choose a file")
-if uploaded_file1 is not None:
+#if uploaded_file1 is not None:
     # To read file as bytes:
-    bytes_data = uploaded_file1.getvalue()
+#    bytes_data = uploaded_file1.getvalue()
     #st.write(bytes_data)
 
     #dataframe = pd.DataFrame(uploaded_file1)
