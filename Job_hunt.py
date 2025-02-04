@@ -237,3 +237,10 @@ if uploaded_file is not None:
         #st.write(f"Image processed at: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
 else:
     st.info("Please upload an image to proceed.")
+
+
+def moreimg():
+    st.image(mimg)
+
+mimg = st.text_input()
+st.button("Click to generate more image", on_click = moreimg)
