@@ -34,7 +34,7 @@ def add_task():
     if task_name and role:
 
         #//create a new line of data using pandas concat that will only have the task name and the role. the columns to be displayed are the task name and role. this is important so that the system knows where the dat will be placed at.
-        new_data = pd.DataFrame([[task_name, role]], columns=["Task Name", "role"])
+        new_data = pd.DataFrame([[task_name, role]], columns=["Job Title", "Company Name"])
         
         #//use the concat method to append the new data line into the next available row in the google sheet.
         new = pd.concat([df_job,new_data])
@@ -63,7 +63,7 @@ with st.form("update data"):
 
     
 #//using the streamlit data editor to displa the information from the sheet that is stored in "df" variable. dont know what is the key and num_rows is about.
-data_edit = st.data_editor(df_job, use_container_width = False, key="my_key", num_rows = "dynamic" )
+data_edit = st.data_editor(df_job, use_container_width = True, key="my_key", num_rows = "dynamic" )
 #*(used for testing)st.write(st.session_state["my_key"])
 
 #//streamlit button to run the function of updating the google sheet with the new data table
