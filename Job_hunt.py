@@ -244,3 +244,5 @@ def moreimg():
 
 mimg = st.text_input("url", key = "mimg")
 st.button("Click to generate more image", on_click = moreimg)
+
+###look at this cache issue whether can use cache to solve the issue.
