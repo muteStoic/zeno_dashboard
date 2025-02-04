@@ -63,7 +63,7 @@ with st.form("update data"):
 
     
 #//using the streamlit data editor to displa the information from the sheet that is stored in "df" variable. dont know what is the key and num_rows is about.
-data_edit = st.data_editor(df_job, use_container_width = True, key="my_key", num_rows = "dynamic" )
+data_edit = st.data_editor(df_job, use_container_width = False, key="my_key", num_rows = "dynamic" )
 #*(used for testing)st.write(st.session_state["my_key"])
 
 #//streamlit button to run the function of updating the google sheet with the new data table
