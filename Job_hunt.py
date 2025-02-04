@@ -83,7 +83,7 @@ st.button('update the sheet', on_click = update_sheet)
 #st.write(role2)
 
 def add_image():
-    new_data = pd.DataFrame([[uploaded_file1, role]], columns=["Job Title", "Company Name"])
+    new_data = pd.DataFrame([[uploaded_file1, uploaded_file1]], columns=["Job Title", "Company Name"])
     st.dataframe(new_data)
     
 
