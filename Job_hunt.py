@@ -242,5 +242,5 @@ else:
 def moreimg():
     st.image(mimg)
 
-mimg = st.text_input()
+mimg = st.text_input("url", key = "mimg")
 st.button("Click to generate more image", on_click = moreimg)
