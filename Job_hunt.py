@@ -205,7 +205,7 @@ if uploaded_file1 is not None:
     # Can be used wherever a "file-like" object is accepted:
 
 
-working_repo = "./workingrepo"
+working_repo = "./Images"
 os.makedirs(working_repo, exist_ok=True)
 
 st.title("Upload an Image to Save in Working Repo")
