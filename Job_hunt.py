@@ -83,5 +83,4 @@ st.button('update the sheet', on_click = update_sheet)
 
 files = st.fileuploader("upload jpg image")
 
-st.write(files)
 
