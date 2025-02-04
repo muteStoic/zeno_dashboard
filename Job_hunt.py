@@ -4,6 +4,8 @@ from streamlit_gsheets import GSheetsConnection
 from io import StringIO
 import openai
 import base64
+from PIL import Image
+import os
 
 
 assistandid = "asst_Tot8FMaAwWRmOAng4D6z3x66"
@@ -201,4 +203,22 @@ if uploaded_file1 is not None:
 
 
     # Can be used wherever a "file-like" object is accepted:
-    
+
+
+working_repo = "./workingrepo"
+os.makedirs(working_repo, exist_ok=True)
+
+st.title("Upload an Image to Save in Working Repo")
+
+# File uploader widget
+uploaded_file = st.file_uploader("Choose an image file", type=["jpg", "jpeg", "png"])
+
+if uploaded_file is not None:
+    # Open and display the image
+    image = Image.open(uploaded_file)
+    st.image(image, caption="Uploaded Image", use_column_width=True)
+
+    # Save the image to the working directory
+    file_path = os.path.join(working_repo, uploaded_file.name)
+    image.save(file_path)
+    st.success(f"Image saved to {file_path}")
