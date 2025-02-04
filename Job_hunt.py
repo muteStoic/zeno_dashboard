@@ -84,5 +84,5 @@ st.button('update the sheet', on_click = update_sheet)
 uploaded_file = st.file_uploader("Choose a file")
 if uploaded_file is not None:
     # To read file as bytes:
-    bytes_data = uploaded_file.getvalue()
+    bytes_data = uploaded_file.geturl()
     st.write(bytes_data)
