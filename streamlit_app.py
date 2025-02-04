@@ -5,6 +5,14 @@ from streamlit_gsheets import GSheetsConnection
 #//remove all the browser cache
 st.cache_resource.clear()
 
+
+job_hunt_page = st.Page("Job_hunt.py", title = "Job hunting")
+page_3 = st.Page("Page_3.py", title = "Blank empty page")
+
+sideBar = st.navigation([job_hunt_page, page_3])
+sideBar.run()
+
+
 #//initialize the connection that is refered in the secrets toml
 conn = st.connection("google_service_account", type = GSheetsConnection)
 
