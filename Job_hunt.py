@@ -38,6 +38,7 @@ def add_task():
         
         #//use the concat method to append the new data line into the next available row in the google sheet.
         new = pd.concat([df_job,new_data])
+        st.dataframe(new)
 
         #*(used for testing)st.dataframe(new)
         # Append the new data to the Google Sheets
