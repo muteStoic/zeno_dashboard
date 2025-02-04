@@ -7,7 +7,7 @@ import openai
 
 assistandid = "asst_Tot8FMaAwWRmOAng4D6z3x66"
 
-
+client = openai
 #//remove all the browser cache
 st.cache_resource.clear()
 
@@ -91,23 +91,11 @@ def chat_with_openai_text_and_image():
     
     text_prompt = "what can you tell about this image"
     image_path = uploaded_file1
-    
-    # Open the image in binary mode
-    #with open(image_path, "rb") as image_file:
-    #    image_bytes = image_file.read()
+    thread = client.beta.threads.create()
+    st.session_state.threadid = thread.id
+    st.write(st.session_state.threadid)
 
-    completion = openai.ChatCompletion.create(
-  # Use GPT 3.5 as the LLM
-  model="gpt-4",
-  # Pre-define conversation messages for the possible roles
-  messages=[
-    {"role": "system", "content": "You are a helpful assistant."},
-    {"role": "user", "content": "tell me something cool"}
-  ]
-)
-# Print the returned output from the LLM model
-    print(completion.choices[0].message)
-    
+    return st.session_state.threadid
 
     """
     response = openai.ChatCompletion.create(
