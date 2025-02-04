@@ -93,9 +93,6 @@ st.button("upload image to sheet", on_click = add_image)
     
 st.image(uploaded_file)
 
-import streamlit as st
-import pandas as pd
-from io import StringIO
 
 uploaded_file = st.file_uploader("Choose a file")
 if uploaded_file is not None:
