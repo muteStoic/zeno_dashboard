@@ -7,16 +7,16 @@ from streamlit_gsheets import GSheetsConnection
 st.cache_resource.clear()
 
 #//initialize the connection that is refered in the secrets toml
-conn = st.connection("google_service_account2", type = GSheetsConnection)
+conn = st.connection("google_service_account", type = GSheetsConnection)
 
 #//create variable that capture the information in the first sheet of the gsheetinto variable df
-df_job = conn.read(worksheet = "Sheet1", ttl="1m")
+df_job = conn.read(worksheet = "Sheet2", ttl="1m")
 
 
 #//function to insert new data into the spreadsheet that is link to the "update button"
 def update_sheet() :
     #update all the data in the Sheet titled "Sheet1" with the new data from "data_edit" variable
-    conn.update(worksheet = "Sheet1", data = data_edit)
+    conn.update(worksheet = "Sheet2", data = data_edit)
 
 
 
