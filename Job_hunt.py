@@ -10,7 +10,7 @@ st.cache_resource.clear()
 conn = st.connection("gsheetsjob", type = GSheetsConnection)
 
 #//create variable that capture the information in the first sheet of the gsheetinto variable df
-df = conn.read()
+df_job = conn.read(ttl="1m")
 
 
 #//function to insert new data into the spreadsheet that is link to the "update button"
@@ -37,7 +37,7 @@ def add_task():
         new_data = pd.DataFrame([[task_name, role]], columns=["Task Name", "role"])
         
         #//use the concat method to append the new data line into the next available row in the google sheet.
-        new = pd.concat([df,new_data])
+        new = pd.concat([df_job,new_data])
 
         #*(used for testing)st.dataframe(new)
         # Append the new data to the Google Sheets
@@ -63,7 +63,7 @@ with st.form("update data"):
 
     
 #//using the streamlit data editor to displa the information from the sheet that is stored in "df" variable. dont know what is the key and num_rows is about.
-data_edit = st.data_editor(df, key="my_key", num_rows = "dynamic" )
+data_edit = st.data_editor(df_job, key="my_key", num_rows = "dynamic" )
 #*(used for testing)st.write(st.session_state["my_key"])
 
 #//streamlit button to run the function of updating the google sheet with the new data table
