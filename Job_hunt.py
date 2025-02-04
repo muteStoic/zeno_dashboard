@@ -2,9 +2,11 @@ import streamlit as st
 import pandas as pd
 from streamlit_gsheets import GSheetsConnection
 from io import StringIO
+from openai import OpenAI
 
 
-
+assistandid = "asst_Tot8FMaAwWRmOAng4D6z3x66"
+client = OpenAI()
 
 #//remove all the browser cache
 st.cache_resource.clear()
@@ -81,6 +83,65 @@ st.button('update the sheet', on_click = update_sheet)
 
 #st.write(taskName2)
 #st.write(role2)
+
+################################################################################
+#def run_open_AI():
+
+def chat_with_openai_text_and_image():
+    
+    text_prompt = "what can you tell about this image"
+    image_path = uploaded_file1
+    
+    # Open the image in binary mode
+    with open(image_path, "rb") as image_file:
+        image_bytes = image_file.read()
+
+    response = client.ChatCompletion.create(
+        model="gpt-4",
+        messages=[
+            {"role": "system", "content": "You are a helpful assistant."},
+            {"role": "user", "content": text_prompt}
+        ],
+        files=[{"name": "image.png", "data": image_bytes}]
+    )
+
+    st.write(response)
+
+    return response['choices'][0]['message']['content']
+
+
+    
+    #while run.status != "completed":
+        #time.sleep(1)
+        #print(run.status)
+
+    
+
+    if run.status == 'completed': 
+        messages = client.beta.threads.messages.list(thread_id=st.session_state.threadid)
+        print(messages)
+
+        last_message = messages.data[0]
+        response = last_message.content[0].text.value
+        print(response)
+        st.session_state.article_generated.append(response)
+        st.session_state.cur_article = response
+        #st.session_state.cur_article = '"""' + st.session_state.cur_article + '"""'
+        st.session_state.ai_generate = response
+        #ai_generate.append(response)
+        
+
+    else:
+        
+        print(run.status)
+        st.toast("Generating Failed. Regenerating Article")
+
+            
+        run_open_AI()
+
+
+st.button("normal button")
+
 
 def add_image():
     new_data = pd.DataFrame([[uploaded_file1, uploaded_file1]], columns=["Job Title", "Company Name"])
