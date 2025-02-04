@@ -105,9 +105,9 @@ def chat_with_openai_text_and_image():
         files=[{"name": "image.png", "data": image_bytes}]
     )
 
-    st.write(response)
+    st.write(response['choices'][0]['message']['content'])
 
-    return response['choices'][0]['message']['content']
+    return 
 
 
     
@@ -140,7 +140,7 @@ def chat_with_openai_text_and_image():
         run_open_AI()
 
 
-st.button("normal button")
+st.button("normal button", on_click = chat_with_openai_text_and_image)
 
 
 def add_image():
