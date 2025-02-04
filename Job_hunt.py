@@ -93,8 +93,8 @@ def chat_with_openai_text_and_image():
     image_path = uploaded_file1
     
     # Open the image in binary mode
-    with open(image_path, "rb") as image_file:
-        image_bytes = image_file.read()
+    #with open(image_path, "rb") as image_file:
+    #    image_bytes = image_file.read()
 
     response = client.ChatCompletion.create(
         model="gpt-4",
@@ -102,7 +102,8 @@ def chat_with_openai_text_and_image():
             {"role": "system", "content": "You are a helpful assistant."},
             {"role": "user", "content": text_prompt}
         ],
-        files=[{"name": "image.png", "data": image_bytes}]
+        #files=[{"name": "image.png", "data": image_bytes}]
+        files = image_path
     )
 
     st.write(response['choices'][0]['message']['content'])
