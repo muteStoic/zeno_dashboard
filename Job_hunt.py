@@ -106,6 +106,7 @@ def chat_with_openai_text_and_image():
 
     # Getting the Base64 string
     base64_image = encode_image(st.session_state.fileurl)
+    st.write(base64_image)
     
     """
     text_prompt = "what can you tell about this image"
