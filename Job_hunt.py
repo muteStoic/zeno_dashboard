@@ -90,8 +90,6 @@ def add_image():
 uploaded_file = st.file_uploader("Choose a file")
 st.button("upload image to sheet", on_click = add_image)
 
-    
-st.image(uploaded_file)
 
 
 uploaded_file = st.file_uploader("Choose a file")
