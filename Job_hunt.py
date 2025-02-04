@@ -81,7 +81,8 @@ st.button('update the sheet', on_click = update_sheet)
 #st.write(taskName2)
 #st.write(role2)
 
-files = st.file_uploader("upload jpg image")
-fdata = files.getvalue()
-st.write(fdata)
-
+uploaded_file = st.file_uploader("Choose a file")
+if uploaded_file is not None:
+    # To read file as bytes:
+    bytes_data = uploaded_file.getvalue()
+    st.write(bytes_data)
