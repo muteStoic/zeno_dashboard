@@ -10,7 +10,7 @@ job_hunt_page = st.Page("Job_hunt.py", title = "Job hunting")
 page_3 = st.Page("Page_3.py", title = "Blank empty page")
 
 pg = st.navigation([homePage,job_hunt_page,page_3])
-
+pg.run()
 
 
 #//initialize the connection that is refered in the secrets toml
