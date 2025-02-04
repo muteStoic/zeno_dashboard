@@ -201,6 +201,7 @@ st.button("upload image to sheet", on_click = add_image)
 @st.cache_data(ttl=3600)
 def load_image(uploaded_file):
     if uploaded_file is not None:
+        st.write(uploaded_file)
         try:
             image = Image.open(uploaded_file)
             return image
