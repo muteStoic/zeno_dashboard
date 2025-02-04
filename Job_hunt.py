@@ -95,7 +95,31 @@ def chat_with_openai_text_and_image():
     st.session_state.threadid = thread.id
     st.write(st.session_state.threadid)
 
-    return st.session_state.threadid
+    message = client.beta.threads.messages.create(
+    thread_id=st.session_state.threadid,
+    role="user",
+    content= "tell me something cool"
+    )
+
+    run = client.beta.threads.runs.create_and_poll(
+    thread_id=st.session_state.threadid,
+    assistant_id=assistandid  
+    )
+
+    if run.status == 'completed': 
+        messages = client.beta.threads.messages.list(thread_id=st.session_state.threadid)
+        print(messages)
+
+        last_message = messages.data[0]
+        response = last_message.content[0].text.value
+        print(response)
+        st.session_state.article_generated.append(response)
+        st.session_state.cur_article = response
+        #st.session_state.cur_article = '"""' + st.session_state.cur_article + '"""'
+        st.session_state.ai_generate = response
+        #ai_generate.append(response)
+
+    return
 
     """
     response = openai.ChatCompletion.create(
