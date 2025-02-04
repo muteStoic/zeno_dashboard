@@ -83,8 +83,9 @@ st.button('update the sheet', on_click = update_sheet)
 #st.write(role2)
 
 def add_image():
-    imageupload = st.session_state.uploaded_file
-    st.image(imageupload)
+    new_data = pd.DataFrame([[uploaded_file1, role]], columns=["Job Title", "Company Name"])
+    st.dataframe(new_data)
+    
 
 
 uploaded_file1 = st.file_uploader("Choose a file")
@@ -98,16 +99,10 @@ if uploaded_file1 is not None:
     bytes_data = uploaded_file1.getvalue()
     st.write(bytes_data)
 
-    dataframe = pd.read_csv(uploaded_file1)
+    dataframe = pd.DataFrame(uploaded_file1)
     st.write(dataframe)
 
-    # To convert to a string based IO:
-    stringio = StringIO(uploaded_file1.getvalue().decode("utf-8"))
-    st.write(stringio)
 
-    # To read file as string:
-    string_data = stringio.read()
-    st.write(string_data)
 
     # Can be used wherever a "file-like" object is accepted:
     
