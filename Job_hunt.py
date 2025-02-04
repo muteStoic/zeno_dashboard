@@ -82,5 +82,6 @@ st.button('update the sheet', on_click = update_sheet)
 #st.write(role2)
 
 files = st.file_uploader("upload jpg image")
-st.write(files.name)
+fdata = files.getvalue()
+st.write(fdata)
 
