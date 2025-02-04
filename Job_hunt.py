@@ -92,14 +92,14 @@ st.button("upload image to sheet", on_click = add_image)
 
 
 
-uploaded_file = st.file_uploader("Choose a file")
-if uploaded_file is not None:
+uploaded_file1 = st.file_uploader("Choose a file")
+if uploaded_file1 is not None:
     # To read file as bytes:
-    bytes_data = uploaded_file.getvalue()
+    bytes_data = uploaded_file1.getvalue()
     st.write(bytes_data)
 
     # To convert to a string based IO:
-    stringio = StringIO(uploaded_file.getvalue().decode("utf-8"))
+    stringio = StringIO(uploaded_file1.getvalue().decode("utf-8"))
     st.write(stringio)
 
     # To read file as string:
@@ -107,5 +107,5 @@ if uploaded_file is not None:
     st.write(string_data)
 
     # Can be used wherever a "file-like" object is accepted:
-    dataframe = pd.read_csv(uploaded_file)
+    dataframe = pd.read_csv(uploaded_file1)
     st.write(dataframe)
