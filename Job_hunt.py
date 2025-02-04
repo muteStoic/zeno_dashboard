@@ -82,8 +82,14 @@ st.button('update the sheet', on_click = update_sheet)
 #st.write(taskName2)
 #st.write(role2)
 
-uploaded_file = st.file_uploader("Choose a file")
+def add_image():
+    imageupload = st.session_state.uploaded_file
+    st.image(imageupload)
 
+
+uploaded_file = st.file_uploader("Choose a file")
+st.button("upload image to sheet", on_click = add_image)
 
     
 st.image(uploaded_file)
+
