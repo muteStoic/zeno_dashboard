@@ -96,6 +96,20 @@ def chat_with_openai_text_and_image():
     #with open(image_path, "rb") as image_file:
     #    image_bytes = image_file.read()
 
+    completion = openai.ChatCompletion.create(
+  # Use GPT 3.5 as the LLM
+  model="gpt-4",
+  # Pre-define conversation messages for the possible roles
+  messages=[
+    {"role": "system", "content": "You are a helpful assistant."},
+    {"role": "user", "content": "tell me something cool"}
+  ]
+)
+# Print the returned output from the LLM model
+    print(completion.choices[0].message)
+    
+
+    """
     response = openai.ChatCompletion.create(
         model="gpt-4",
         messages=[
@@ -115,6 +129,8 @@ def chat_with_openai_text_and_image():
     #while run.status != "completed":
         #time.sleep(1)
         #print(run.status)
+
+    """
 
     
 
