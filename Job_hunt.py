@@ -186,9 +186,28 @@ def add_image():
     
 
 
+
+
+
+
+
+
 uploaded_file1 = st.file_uploader("Choose a file")
+
 st.button("upload image to sheet", on_click = add_image)
 
+
+
+@st.cache_data(ttl=3600)
+def load_image(uploaded_file):
+    if uploaded_file is not None:
+        try:
+            image = Image.open(uploaded_file)
+            return image
+        except Exception as e:
+            st.error(f"Error loading image: {e}")
+            return None
+    return None
 
 
 #uploaded_file1 = st.file_uploader("Choose a file")
@@ -200,25 +219,17 @@ if uploaded_file1 is not None:
     #dataframe = pd.DataFrame(uploaded_file1)
     #st.write(dataframe)
 
-
-
-    # Can be used wherever a "file-like" object is accepted:
-
-
-working_repo = ".Images"
-os.makedirs(working_repo, exist_ok=True)
-
-st.title("Upload an Image to Save in Working Repo")
-
-# File uploader widget
-uploaded_file = st.file_uploader("Choose an image file", type=["jpg", "jpeg", "png"])
+uploaded_file = st.file_uploader("Upload your image (JPEG, PNG, etc.)", type=["jpg", "jpeg", "png"])
 
 if uploaded_file is not None:
-    # Open and display the image
-    image = Image.open(uploaded_file)
-    st.image(image, caption="Uploaded Image", use_column_width=True)
+    # Call the cached function
+    image = load_image(uploaded_file)
 
-    # Save the image to the working directory
-    file_path = os.path.join(working_repo, uploaded_file.name)
-    image.save(file_path)
-    st.success(f"Image saved to {file_path}")
+    if image is not None:
+        st.write("Image successfully loaded!")
+        st.image(image, caption="Uploaded Image", use_column_width=True)
+
+        # Display the time when the image was processed (current session)
+        #st.write(f"Image processed at: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
+else:
+    st.info("Please upload an image to proceed.")
