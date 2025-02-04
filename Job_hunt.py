@@ -100,7 +100,7 @@ def encode_image(image_path):
 
 def chat_with_openai_text_and_image():
     st.write(uploaded_file1)
-    image_path = uploaded_file1._file_urls
+    image_path = uploaded_file1._file_urls.upload_url
     st.write(image_path)
 
     # Getting the Base64 string
