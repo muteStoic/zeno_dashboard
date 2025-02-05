@@ -249,9 +249,10 @@ uploaded_file = st.file_uploader("Upload your image (JPEG, PNG, etc.)", type=["j
 
 # Load and cache the image
 image = load_image(uploaded_file)
-imgread = uploaded_file.read()
+
 
 if image:
+    imgread = uploaded_file.read()
     st.write("Image successfully loaded and cached.")
     st.image(image, caption="Cached Image", use_column_width=True)
     
