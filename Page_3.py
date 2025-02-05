@@ -15,5 +15,6 @@ st.dataframe(df_job)
 
 container1 = st.container(border = True)
 container1.write("testing")
+container1.expander("test2")
 expander1 = st.expander("click to open")
 expander1.write("testtesttesttesttesttesttest")
