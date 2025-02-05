@@ -96,7 +96,7 @@ def encode_image(image_path):
 
 
     with open(image_path, "rb") as image_file:
-        return base64.b64encode(image_file.read()).decode("utf-8")
+        return base64.b64encode(image).decode("utf-8")
 
 
 
@@ -107,7 +107,7 @@ def chat_with_openai_text_and_image():
     st.write(st.session_state.fileurl)
 
     # Getting the Base64 string
-    base64_image = encode_image(image)
+    base64_image = encode_image(st.session_state.fileurl)
     response = client.chat.completions.create(
     model="gpt-4o-mini",
     messages=[
