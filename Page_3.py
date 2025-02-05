@@ -33,8 +33,7 @@ if st.button("Send Message"):
         # Read the image content and encode it to base64
         image_bytes = uploaded_file.read()
         image_base64 = base64.b64encode(image_bytes).decode("utf-8")
-        st.write(image_bytes)
-        st.write(image_base64)
+        
         st.write(uploaded_file.id)
 
 
