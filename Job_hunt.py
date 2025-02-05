@@ -119,8 +119,8 @@ def chat_with_openai_text_and_image():
     message = client.beta.threads.messages.create(
     thread_id=st.session_state.threadid,
     role="user",
-    content= "",
-    filename = new_base64
+    content= [{"type": "text","text": "read this image",},{"type": "image_url","image_url": {"url": f"data:image/jpg;base64,{new_base64}"},},],
+    
     )
 
 
