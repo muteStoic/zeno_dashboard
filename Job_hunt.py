@@ -135,7 +135,7 @@ com_name = company_full_information["Company Name"]
 url_job = company_full_information["URL link"]
 com_email = company_full_information["Company email"]
 pic_email = company_full_information["PIC email"]
-com_inf = company_full_information["Company Information"]
+com_inf = company_full_information["Company information"]
 com_web = company_full_information["Company website"]
 salary = company_full_information["Salary Range"]
 
