@@ -38,7 +38,7 @@ if st.button("Send Message"):
             "content": [
                 {"type": "text", "text": user_message},
                 {
-                    "type": "image_url",
+                    "type": "image_file",
                     "image": {
                         "bytes": image_base64,
                         "mime_type": uploaded_file.type
