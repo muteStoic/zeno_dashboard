@@ -34,7 +34,7 @@ if st.button("Send Message"):
         image_bytes = uploaded_file.read()
         image_base64 = base64.b64encode(image_bytes).decode("utf-8")
         
-        st.write(uploaded_file.read())
+        
 
 
         thread = client.beta.threads.create(
@@ -46,14 +46,8 @@ if st.button("Send Message"):
           "type": "text",
           "text": "What is the difference between these images?"
         },
-        {
-          "type": "image_url",
-          "image_url": {"url": "https://example.com/image.png"}
-        },
-        {
-          "type": "image_file",
-          "image_file": {"file_id": uploaded_file.id}
-        },
+        
+        {"type": "image_url","image_url": {"url": f"data:image/jpg;base64,{image_base64}"}}
       ],
     }
   ]
