@@ -139,11 +139,7 @@ com_inf = company_full_information["Company information"]
 com_web = company_full_information["Company website"]
 salary = company_full_information["Salary Range"]
 
-job_data = pd.DataFrame([[job_title,job_desc,key_act,com_name,url_job,com_name
-                          , url_job,com_email,pic_email,com_inf,com_web,salary]]
-                          , columns=["Job Title", "Job Description","Key Activites"
-                            ,"Company Name", "URL link", "Company email", "PIC Email",
-                            "Company information", "Company website", "Salary Range"])
+job_data = pd.DataFrame([[job_title,job_desc,key_act,com_name,url_job,com_name, url_job,com_email,pic_email,com_inf,com_web,salary]], columns=["Job Title", "Job Description","Key Activit","Company Name", "URL link", "Company email", "PIC Email","Company information", "Company website", "Salary Range"])
 
         
 
