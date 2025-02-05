@@ -277,8 +277,6 @@ else:
 
 st.title("OpenAI Image and Text Messaging App")
 
-# Text input for your message
-user_message = st.text_input("Enter your message:", "Analyze this image and tell me what's in it.")
 
 # File uploader for the image
 uploaded_file = st.file_uploader("Upload an image", type=["jpg", "png"])
