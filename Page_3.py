@@ -34,6 +34,32 @@ if st.button("Send Message"):
         image_bytes = uploaded_file.read()
         image_base64 = base64.b64encode(image_bytes).decode("utf-8")
 
+
+        thread = client.beta.threads.create(
+  messages=[
+    {
+      "role": "user",
+      "content": [
+        {
+          "type": "text",
+          "text": "What is the difference between these images?"
+        },
+        {
+          "type": "image_url",
+          "image_url": {"url": "https://example.com/image.png"}
+        },
+        {
+          "type": "image_file",
+          "image_file": {"file_id": uploaded_file.id}
+        },
+      ],
+    }
+  ]
+)
+    st.write(thread)
+
+
+'''
         response = client.chat.completions.create(
     model="gpt-4o-mini",
     messages=[
@@ -48,6 +74,8 @@ if st.button("Send Message"):
 
         #"type": "image_url","image_url": {"url": f"data:image/jpg;base64,{new_base64}"
 
+        
+
         # Send the message
         try:
             message = client.beta.threads.messages.create(**message_payload)
@@ -55,3 +83,4 @@ if st.button("Send Message"):
             st.json(message)  # Show the response
         except Exception as e:
             st.error(f"Error: {e}")
+            '''
