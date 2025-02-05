@@ -107,7 +107,7 @@ def chat_with_openai_text_and_image():
     st.write(st.session_state.fileurl)
 
     # Getting the Base64 string
-    base64_image = encode_image(st.session_state.fileurl)
+    base64_image = encode_image(image)
     response = client.chat.completions.create(
     model="gpt-4o-mini",
     messages=[
