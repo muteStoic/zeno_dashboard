@@ -114,7 +114,7 @@ if st.button("Send Message"):
     company_full_information1 = response.choices[0].message.content#change this data to response.choices[0].message.content for full running build
     print(company_full_information1[27:-3])
     company_full_information = company_full_information1[27:-3]
-    st.write(company_full_information1)
+    st.write(company_full_information)
     #st.write(company_full_information["Company Name"])
     job_title = company_full_information["Job Title"]
     job_desc = company_full_information["Job Description"]
