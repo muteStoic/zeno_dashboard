@@ -111,6 +111,33 @@ if st.button("Send Message"):
         {"role": "user","content": [{"type": "text","text": "You will help me to read an image to extract important data from it. The data that i required is as follows (Job Title	Job Description	Key Activities	Company Name	URL link   	Company email	PIC email	Company information	Company website	Salary Range). Sources is the url link in the image.save the extracted data as extracted_data. I just need the code itself and nothing else. if there is no information just put in 'nil'. Do not say anything else other than the requested information.",},{"type": "image_url","image_url": {"url": f"data:image/jpg;base64,{image_base64}"},},],}],)
         st.write(response.choices[0].message.content)
 
+    company_full_information = response.choices[0].message.content#change this data to response.choices[0].message.content for full running build
+    st.write(company_full_information["Company Name"])
+    job_title = company_full_information["Job Title"]
+    job_desc = company_full_information["Job Description"]
+    key_act = company_full_information["Key Activities"]
+    com_name = company_full_information["Company Name"]
+    url_job = company_full_information["URL link"]
+    com_email = company_full_information["Company email"]
+    pic_email = company_full_information["PIC email"]
+    com_inf = company_full_information["Company information"]
+    com_web = company_full_information["Company website"]
+    salary = company_full_information["Salary Range"]
+
+    job_data = pd.DataFrame([[job_title, job_desc, key_act, com_name, url_job, com_email, pic_email, com_inf, com_web, salary
+]], columns=["Job Title","Job Description", "Key Activities", "Company Name", "URL link", "Company email", "PIC email", "Company information", "Company website", "Salary Range"
+])
+#"Job Title","Job Description", "Key Activities", "Company Name", "URL link", "Company email", "PIC email", "Company information", "Company website", "Salary Range"
+#job_title, job_desc, key_act, com_name, url_job, com_email, pic_email, com_inf, com_web, salary
+#job_data = pd.DataFrame([[job_title,job_desc,key_act,com_name,url_job,com_name, url_job,com_email,pic_email,com_inf,com_web,salary]], columns=["Job Title", "Job Description","Key Activit","Company Name", "URL link", "Company email", "PIC Email","Company information", "Company website", "Salary Range"])
+    st.data_editor(job_data)
+    full_job = pd.concat([df_job,job_data])
+    st.dataframe(full_job)      
+    conn.update(worksheet ="Sheet2", data = full_job)  
+
+
+
+
 #test code of extracted data below
 extracted_data = {
     "Job Title": "Project Manager",
@@ -126,28 +153,3 @@ extracted_data = {
 }
 #####
 ##
-company_full_information = extracted_data#change this data to response.choices[0].message.content for full running build
-st.write(company_full_information["Company Name"])
-job_title = company_full_information["Job Title"]
-job_desc = company_full_information["Job Description"]
-key_act = company_full_information["Key Activities"]
-com_name = company_full_information["Company Name"]
-url_job = company_full_information["URL link"]
-com_email = company_full_information["Company email"]
-pic_email = company_full_information["PIC email"]
-com_inf = company_full_information["Company information"]
-com_web = company_full_information["Company website"]
-salary = company_full_information["Salary Range"]
-
-job_data = pd.DataFrame([[job_title, job_desc, key_act, com_name, url_job, com_email, pic_email, com_inf, com_web, salary
-]], columns=["Job Title","Job Description", "Key Activities", "Company Name", "URL link", "Company email", "PIC email", "Company information", "Company website", "Salary Range"
-])
-#"Job Title","Job Description", "Key Activities", "Company Name", "URL link", "Company email", "PIC email", "Company information", "Company website", "Salary Range"
-#job_title, job_desc, key_act, com_name, url_job, com_email, pic_email, com_inf, com_web, salary
-#job_data = pd.DataFrame([[job_title,job_desc,key_act,com_name,url_job,com_name, url_job,com_email,pic_email,com_inf,com_web,salary]], columns=["Job Title", "Job Description","Key Activit","Company Name", "URL link", "Company email", "PIC Email","Company information", "Company website", "Salary Range"])
-st.data_editor(job_data)
-full_job = pd.concat([df_job,job_data])
-st.dataframe(full_job)      
-conn.update(worksheet ="Sheet2", data = full_job)  
-
-
