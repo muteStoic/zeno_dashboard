@@ -125,6 +125,6 @@ extracted_data = {
     "Salary Range": "Ranges from RM5000 until RM6500"
 }
 #####
-
+##
 company_full_information = extracted_data
-st.write(company_full_information["Job Title"])
+st.write(company_full_information[1])
