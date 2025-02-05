@@ -122,11 +122,7 @@ def chat_with_openai_text_and_image():
     content = [
             {"type": "text", "text": "Analyze this image and tell me if there's any text."},
             {
-                "type": "image",
-                "image": {
-                    "bytes": imgread,
-                    "mime_type": uploaded_file.type
-                }
+                "type": "image_url","image_url": {"url": f"data:image/jpg;base64,{new_base64}"}
             }
         ]
     )
