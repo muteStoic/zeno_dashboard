@@ -111,9 +111,9 @@ if st.button("Send Message"):
         {"role": "user","content": [{"type": "text","text": "You will help me to read an image to extract important data from it. The data that i required is as follows (Job Title	Job Description	Key Activities	Company Name	URL link   	Company email	PIC email	Company information	Company website	Salary Range). Sources is the url link in the image.save the extracted data as extracted_data. I just need the code itself and nothing else. if there is no information just put in 'nil'. Do not say anything else other than the requested information.",},{"type": "image_url","image_url": {"url": f"data:image/jpg;base64,{image_base64}"},},],}],)
         st.write(response.choices[0].message.content)
 
-    company_full_information = response.choices[0].message.content#change this data to response.choices[0].message.content for full running build
-    print(company_full_information[27:-3])
-    company_full_information1 = company_full_information[27:-3]
+    company_full_information1 = response.choices[0].message.content#change this data to response.choices[0].message.content for full running build
+    print(company_full_information1[27:-3])
+    company_full_information = company_full_information1[27:-3]
     st.write(company_full_information1)
     #st.write(company_full_information["Company Name"])
     job_title = company_full_information["Job Title"]
