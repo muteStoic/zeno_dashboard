@@ -35,11 +35,15 @@ if st.button("Send Message"):
         image_base64 = base64.b64encode(image_bytes).decode("utf-8")
         
         
+        
 
 
         thread = client.beta.threads.create(
-  messages={"role": "user","content": [{"type": "text","text": "What is in this image?",},{"type": "image_url","image_url": {"url": f"data:image/jpg;base64,{image_base64}"},},],})
+  messages=[
+        {"role": "user","content": [{"type": "text","text": "What is in this image?",},{"type": "image_url","image_url": {"url": f"data:image/jpg;base64,{image_base64}"},},],}],)
         st.write('df')
+
+
         
 
 
