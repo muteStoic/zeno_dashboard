@@ -2,6 +2,7 @@ import streamlit as st
 import pandas as pd
 from streamlit_gsheets import GSheetsConnection
 from io import StringIO
+from io import BytesIO
 import openai
 import base64
 from PIL import Image
@@ -96,7 +97,7 @@ def encode_image(image_path):
 
 
     with open(image_path, "rb") as image_file:
-        return base64.b64encode(image).decode("utf-8")
+        return base64.b64encode(image_file.read()).decode("utf-8")
 
 
 
@@ -197,8 +198,6 @@ uploaded_file1 = st.file_uploader("Choose a file")
 st.button("upload image to sheet", on_click = add_image)
 
 
-
-
 # Cache image upload for 1 hour
 @st.cache_data(ttl=3600)
 def load_image(uploaded_file):
@@ -207,11 +206,17 @@ def load_image(uploaded_file):
         return image
     return None
 
-def imgL():
-    st.image(image)
+def convert_image_to_base64(image: Image.Image) -> str:
+    """
+    Convert a PIL Image to a Base64 string.
+    """
+    buffered = BytesIO()
+    image.save(buffered, format="PNG")  # Save as PNG or the format of your choice
+    img_bytes = buffered.getvalue()
+    base64_str = base64.b64encode(img_bytes).decode()
+    return base64_str
 
-
-st.title("Image Upload and Retrieval from Cache")
+st.title("Image Upload and Base64 Conversion")
 
 # File uploader for images
 uploaded_file = st.file_uploader("Upload your image (JPEG, PNG, etc.)", type=["jpg", "jpeg", "png"])
@@ -223,11 +228,8 @@ if image:
     st.write("Image successfully loaded and cached.")
     st.image(image, caption="Cached Image", use_column_width=True)
     
-    # Display the same image somewhere else in the app
-    st.write("Displaying the image elsewhere in the app:")
-    st.image(image, caption="Retrieved Cached Image", use_column_width=True)
+    # Convert image to Base64 and display
+    base64_image = convert_image_to_base64(image)
+    st.text_area("Base64 Encoded Image", base64_image)
 else:
     st.info("Please upload an image to proceed.")
-
-
-st.button("click to load another image from the cache", on_click = imgL)
