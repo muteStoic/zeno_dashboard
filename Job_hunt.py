@@ -147,6 +147,7 @@ job_data = pd.DataFrame([[job_title, job_desc, key_act, com_name, url_job, com_e
 #job_data = pd.DataFrame([[job_title,job_desc,key_act,com_name,url_job,com_name, url_job,com_email,pic_email,com_inf,com_web,salary]], columns=["Job Title", "Job Description","Key Activit","Company Name", "URL link", "Company email", "PIC Email","Company information", "Company website", "Salary Range"])
 st.data_editor(job_data)
 full_job = pd.concat([df_job,job_data])
-st.dataframe(full_job)        
+st.dataframe(full_job)      
+conn.update(worksheet ="Sheet2", data = full_job)  
 
 
