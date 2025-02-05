@@ -124,7 +124,7 @@ def chat_with_openai_text_and_image():
             {
                 "type": "image",
                 "image": {
-                    "bytes": base64_image,
+                    "bytes": image,
                     "mime_type": uploaded_file1.type
                 }
             }
