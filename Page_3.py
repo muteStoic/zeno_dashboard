@@ -1,32 +1,50 @@
-import openai
 import streamlit as st
+import openai
+from openai import Client
 
+# Initialize OpenAI API client
 openai.api_key = "your_openai_api_key"
+client = Client()
 
-# File uploader in Streamlit to get the image from the user
+# Initialize session state for the thread ID if not already set
+if "threadid" not in st.session_state:
+    st.session_state.threadid = "your_thread_id_here"
+
+st.title("OpenAI Image and Text Messaging App")
+
+# Text input for your message
+user_message = st.text_input("Enter your message:", "Analyze this image and tell me what's in it.")
+
+# File uploader for the image
 uploaded_file = st.file_uploader("Upload an image", type=["jpg", "png"])
 
-if uploaded_file:
-    # Read the image data
-    image_bytes = uploaded_file.read()
-    
-    # Create the message payload
-    message_payload = {
-        "thread_id": st.session_state.threadid,
-        "role": "user",
-        "content": [
-            {"type": "text", "text": "Analyze this image and tell me if there's any text."},
-            {
-                "type": "image",
-                "image": {
-                    "bytes": image_bytes,
-                    "mime_type": uploaded_file.type
-                }
-            }
-        ]
-    }
+if st.button("Send Message"):
+    if not uploaded_file:
+        st.error("Please upload an image.")
+    else:
+        # Read the image content as bytes
+        image_bytes = uploaded_file.read()
 
-    # Send the message
-    message = openai.Client().beta.threads.messages.create(**message_payload)
-    
-    st.write("Response from OpenAI:", message)
+        # Construct the message payload
+        message_payload = {
+            "thread_id": st.session_state.threadid,
+            "role": "user",
+            "content": [
+                {"type": "text", "text": user_message},
+                {
+                    "type": "image",
+                    "image": {
+                        "bytes": image_bytes,
+                        "mime_type": uploaded_file.type
+                    }
+                }
+            ]
+        }
+
+        # Send the message
+        try:
+            message = client.beta.threads.messages.create(**message_payload)
+            st.success("Message sent successfully!")
+            st.json(message)  # Show the response
+        except Exception as e:
+            st.error(f"Error: {e}")
