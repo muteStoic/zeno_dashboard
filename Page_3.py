@@ -39,13 +39,15 @@ if st.button("Send Message"):
                 {"type": "text", "text": user_message},
                 {
                     "type": "image_file",
-                    "image": {
+                    "image_file": {
                         "bytes": image_base64,
                         "mime_type": uploaded_file.type
                     }
                 }
             ]
         }
+
+        #"type": "image_url","image_url": {"url": f"data:image/jpg;base64,{new_base64}"
 
         # Send the message
         try:
