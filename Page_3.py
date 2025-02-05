@@ -20,6 +20,10 @@ user_message = st.text_input("Enter your message:", "Analyze this image and tell
 uploaded_file = st.file_uploader("Upload an image", type=["jpg", "png"])
 
 if st.button("Send Message"):
+    thread = client.beta.threads.create()
+    st.session_state.threadid = thread.id
+
+
     if not uploaded_file:
         st.error("Please upload an image.")
     else:
