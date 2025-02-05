@@ -1,5 +1,6 @@
 import streamlit as st
 import openai
+import base64
 from openai import Client
 
 # Initialize OpenAI API client
@@ -22,8 +23,9 @@ if st.button("Send Message"):
     if not uploaded_file:
         st.error("Please upload an image.")
     else:
-        # Read the image content as bytes
+        # Read the image content and encode it to base64
         image_bytes = uploaded_file.read()
+        image_base64 = base64.b64encode(image_bytes).decode("utf-8")
 
         # Construct the message payload
         message_payload = {
@@ -34,7 +36,7 @@ if st.button("Send Message"):
                 {
                     "type": "image",
                     "image": {
-                        "bytes": image_bytes,
+                        "bytes": image_base64,
                         "mime_type": uploaded_file.type
                     }
                 }
