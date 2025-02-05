@@ -102,17 +102,17 @@ def encode_image(image_path):
 
 
 def chat_with_openai_text_and_image():
-    st.write(uploaded_file1)
-    image_path = uploaded_file1._file_urls.upload_url
-    st.session_state.fileurl = "job1jpg.jpg"
-    st.write(st.session_state.fileurl)
+    ##st.write(uploaded_file1)
+    ##image_path = uploaded_file1._file_urls.upload_url
+    ##st.session_state.fileurl = "job1jpg.jpg"
+    ##st.write(st.session_state.fileurl)
 
     # Getting the Base64 string
-    base64_image = encode_image(st.session_state.fileurl)
+    ##base64_image = encode_image(st.session_state.fileurl)
     response = client.chat.completions.create(
     model="gpt-4o-mini",
     messages=[
-        {"role": "user","content": [{"type": "text","text": "What is in this image?",},{"type": "image_url","image_url": {"url": f"data:image/jpg;base64,{base64_image}"},},],}],)
+        {"role": "user","content": [{"type": "text","text": "What is in this image?",},{"type": "image_url","image_url": {"url": f"data:image/jpg;base64,{new_base64}"},},],}],)
     st.write(response)
 
     
@@ -230,6 +230,7 @@ if image:
     
     # Convert image to Base64 and display
     base64_image = convert_image_to_base64(image)
+    new_base64 = base64_image
     st.text_area("Base64 Encoded Image", base64_image)
 else:
     st.info("Please upload an image to proceed.")
