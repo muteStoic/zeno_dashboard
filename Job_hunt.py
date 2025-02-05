@@ -124,8 +124,8 @@ def chat_with_openai_text_and_image():
             {
                 "type": "image",
                 "image": {
-                    "bytes": image,
-                    "mime_type": uploaded_file1.type
+                    "bytes": imgread,
+                    "mime_type": uploaded_file.type
                 }
             }
         ]
@@ -249,6 +249,7 @@ uploaded_file = st.file_uploader("Upload your image (JPEG, PNG, etc.)", type=["j
 
 # Load and cache the image
 image = load_image(uploaded_file)
+imgread = uploaded_file.read()
 
 if image:
     st.write("Image successfully loaded and cached.")
