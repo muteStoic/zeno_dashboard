@@ -207,6 +207,10 @@ def load_image(uploaded_file):
         return image
     return None
 
+def imgL():
+    st.image(image)
+
+
 st.title("Image Upload and Retrieval from Cache")
 
 # File uploader for images
@@ -224,3 +228,6 @@ if image:
     st.image(image, caption="Retrieved Cached Image", use_column_width=True)
 else:
     st.info("Please upload an image to proceed.")
+
+
+st.button("click to load another image from the cache", on_click = imgL)
