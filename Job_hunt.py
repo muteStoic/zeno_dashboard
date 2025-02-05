@@ -223,26 +223,28 @@ def load_image(uploaded_file):
     #upload_url: "/_stcore/upload_file/29b2669b-cbba-4448-a030-709a273e4da2/463503d4-bb78-4035-98a7-ab369f0be6f5"
 
 
-uploaded_file = st.file_uploader("1111Upload your image (JPEG, PNG, etc.)", type=["jpg", "jpeg", "png"])
+# Cache image upload for 1 hour
+@st.cache_data(ttl=3600)
+def load_image(uploaded_file):
+    if uploaded_file is not None:
+        image = Image.open(uploaded_file)
+        return image
+    return None
 
-if uploaded_file is not None:
-    # Call the cached function
-    image = load_image(uploaded_file)
+st.title("Image Upload and Retrieval from Cache")
 
-    if image is not None:
-        st.write("Image successfully loaded!")
-        st.image(image, caption="Uploaded Image", use_column_width=True)
+# File uploader for images
+uploaded_file = st.file_uploader("Upload your image (JPEG, PNG, etc.)", type=["jpg", "jpeg", "png"])
 
-        # Display the time when the image was processed (current session)
-        #st.write(f"Image processed at: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
+# Load and cache the image
+image = load_image(uploaded_file)
+
+if image:
+    st.write("Image successfully loaded and cached.")
+    st.image(image, caption="Cached Image", use_column_width=True)
+    
+    # Display the same image somewhere else in the app
+    st.write("Displaying the image elsewhere in the app:")
+    st.image(image, caption="Retrieved Cached Image", use_column_width=True)
 else:
     st.info("Please upload an image to proceed.")
-
-
-def moreimg():
-    st.image(mimg)
-
-mimg = st.text_input("url", key = "mimg")
-st.button("Click to generate more image", on_click = moreimg)
-
-###look at this cache issue whether can use cache to solve the issue.
