@@ -119,7 +119,7 @@ if st.button("Send Message"):
     company_full_information = ast.literal_eval(company_full_information2)
     st.write(company_full_information)
 
-    #st.write(company_full_information["Company Name"])
+    
     job_title = company_full_information["Job Title"]
     job_desc = company_full_information["Job Description"]
     key_act = company_full_information["Key Activities"]
@@ -139,6 +139,7 @@ if st.button("Send Message"):
 #job_data = pd.DataFrame([[job_title,job_desc,key_act,com_name,url_job,com_name, url_job,com_email,pic_email,com_inf,com_web,salary]], columns=["Job Title", "Job Description","Key Activit","Company Name", "URL link", "Company email", "PIC Email","Company information", "Company website", "Salary Range"])
     st.data_editor(job_data)
     full_job = pd.concat([df_job,job_data])
+    st.session_state.fulljobdata = full_job
     st.dataframe(full_job)      
     conn.update(worksheet ="Sheet2", data = full_job)  
 
