@@ -127,4 +127,5 @@ extracted_data = {
 #####
 ##
 company_full_information = extracted_data#change this data to response.choices[0].message.content for full running build
-st.write(company_full_information["URL link"])
+st.write(company_full_information.values)
+
