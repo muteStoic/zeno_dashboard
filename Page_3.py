@@ -56,7 +56,7 @@ if st.button("Send Message"):
     }
   ]
 )
-        st.write(thread)
+        
 
 
 '''
