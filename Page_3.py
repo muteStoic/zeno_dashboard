@@ -46,12 +46,9 @@ if st.button("Send Message"):
         },
         {
           "type": "image_url",
-          "image_url": {"url": "https://example.com/image.png"}
+          "image_url": {"url": f"data:image/jpg;base64,{image_base64}"}
         },
-        {
-          "type": "image_file",
-          "image_file": {"file_id": uploaded_file.id}
-        },
+        
       ],
     }
   ]
@@ -59,3 +56,29 @@ if st.button("Send Message"):
         st.write('df')
         
 
+
+'''
+        response = client.chat.completions.create(
+    model="gpt-4o-mini",
+    messages=[
+        {"role": "user","content": [{"type": "text","text": "What is in this image?",},{"type": "image_url","image_url": {"url": f"data:image/jpg;base64,{image_base64}"},},],}],)
+        st.write(response)
+
+        # Construct the message payload
+        message_payload = {
+            "thread_id": st.session_state.threadid,
+            "role": "user","content": [{"type": "text","text": "What is in this image?",},{"type": "image_url","image_url": {"url": f"data:image/jpg;base64,{image_base64}"},},]
+        }
+
+        #"type": "image_url","image_url": {"url": f"data:image/jpg;base64,{new_base64}"
+
+        
+
+        # Send the message
+        try:
+            message = client.beta.threads.messages.create(**message_payload)
+            st.success("Message sent successfully!")
+            st.json(message)  # Show the response
+        except Exception as e:
+            st.error(f"Error: {e}")
+            '''
