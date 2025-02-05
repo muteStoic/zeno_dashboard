@@ -34,7 +34,7 @@ if st.button("Send Message"):
         image_bytes = uploaded_file.read()
         image_base64 = base64.b64encode(image_bytes).decode("utf-8")
         
-        st.write(uploaded_file.getvalue())
+        st.write(uploaded_file.name)
 
 
         thread = client.beta.threads.create(
