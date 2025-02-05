@@ -38,20 +38,7 @@ if st.button("Send Message"):
 
 
         thread = client.beta.threads.create(
-  messages=[
-    {
-      "role": "user",
-      "content": [
-        {
-          "type": "text",
-          "text": "What is the difference between these images?"
-        },
-        
-        {"type": "image_url","image_url": {"url": f"data:image/jpg;base64,{image_base64}"}}
-      ],
-    }
-  ]
-)
+  messages={"role": "user","content": [{"type": "text","text": "What is in this image?",},{"type": "image_url","image_url": {"url": f"data:image/jpg;base64,{image_base64}"},},],})
         st.write('df')
         
 
