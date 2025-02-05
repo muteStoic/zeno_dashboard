@@ -7,6 +7,7 @@ import openai
 import base64
 from PIL import Image
 import os
+import ast
 
 
 assistandid = "asst_Tot8FMaAwWRmOAng4D6z3x66"
@@ -113,8 +114,11 @@ if st.button("Send Message"):
 
     company_full_information1 = response.choices[0].message.content#change this data to response.choices[0].message.content for full running build
     print(company_full_information1[27:-3])
-    company_full_information = company_full_information1[27:-3]
+    company_full_information2 = company_full_information1[27:-3]
+    
+    company_full_information = ast.literal_eval(company_full_information2)
     st.write(company_full_information)
+
     #st.write(company_full_information["Company Name"])
     job_title = company_full_information["Job Title"]
     job_desc = company_full_information["Job Description"]
