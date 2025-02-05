@@ -43,13 +43,7 @@ if st.button("Send Message"):
         # Construct the message payload
         message_payload = {
             "thread_id": st.session_state.threadid,
-            "role": "user",
-            "content": [
-                {"type": "text", "text": user_message},
-                {
-                    "type": "image_url","image_url": {"url": f"data:image/jpg;base64,{image_base64}"}
-                }
-            ]
+            "role": "user","content": [{"type": "text","text": "What is in this image?",},{"type": "image_url","image_url": {"url": f"data:image/jpg;base64,{image_base64}"},},]
         }
 
         #"type": "image_url","image_url": {"url": f"data:image/jpg;base64,{new_base64}"
