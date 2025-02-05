@@ -109,11 +109,47 @@ def chat_with_openai_text_and_image():
 
     # Getting the Base64 string
     ##base64_image = encode_image(st.session_state.fileurl)
+
+    text_prompt = "what can you tell about this image"
+    image_path = uploaded_file1
+    thread = client.beta.threads.create()
+    st.session_state.threadid = thread.id
+    st.write(st.session_state.threadid)
+
+    message = client.beta.threads.messages.create(
+    thread_id=st.session_state.threadid,
+    role="user",
+    content= "",
+    filename = new_base64
+    )
+
+
+    run = client.beta.threads.runs.create_and_poll(
+    thread_id=st.session_state.threadid,
+    assistant_id=assistandid  
+    )
+
+    if run.status == 'completed': 
+        messages = client.beta.threads.messages.list(thread_id=st.session_state.threadid)
+        print(messages)
+        st.write(messages)
+
+        #last_message = messages.data[0]
+        #response = last_message.content[0].text.value
+        #print(response)
+        #st.session_state.ai_generate = response
+        #ai_generate.append(response)
+        #st.write(st.session_state.ai_generate)
+
+    return
+
+    '''
     response = client.chat.completions.create(
     model="gpt-4o-mini",
     messages=[
         {"role": "user","content": [{"type": "text","text": "What is in this image?",},{"type": "image_url","image_url": {"url": f"data:image/jpg;base64,{new_base64}"},},],}],)
     st.write(response)
+    '''
 
     
    
@@ -131,6 +167,9 @@ def chat_with_openai_text_and_image():
     content= "",
     filename = image_path
     )
+    
+
+    
 
     run = client.beta.threads.runs.create_and_poll(
     thread_id=st.session_state.threadid,
@@ -152,28 +191,7 @@ def chat_with_openai_text_and_image():
 
     """
 
-    """
-    response = openai.ChatCompletion.create(
-        model="gpt-4",
-        messages=[
-            {"role": "system", "content": "You are a helpful assistant."},
-            {"role": "user", "content": text_prompt}
-        ],
-        #files=[{"name": "image.png", "data": image_bytes}]
-        files = image_path
-    )
-
-    st.write(response['choices'][0]['message']['content'])
-
-    return 
-
-
-    
-    #while run.status != "completed":
-        #time.sleep(1)
-        #print(run.status)
-
-    """
+   
 
     
 
