@@ -128,4 +128,20 @@ extracted_data = {
 ##
 company_full_information = extracted_data#change this data to response.choices[0].message.content for full running build
 st.write(company_full_information["Company Name"])
+job_title = company_full_information["Job Title"]
+job_desc = company_full_information["Job Description"]
+key_act = company_full_information["Key Activities"]
+com_name = company_full_information["Company Name"]
+url_job = company_full_information["URL link"]
+com_email = company_full_information["Company email"]
+pic_email = company_full_information["PIC email"]
+com_inf = company_full_information["Company Information"]
+com_web = company_full_information["Company website"]
+salary = company_full_information["Salary Range"]
+
+job_data = pd.DataFrame([[job_title,job_desc,key_act,com_name,url_job,com_name
+                          , url_job,com_email,pic_email,com_inf,com_web,salary]], columns=["Job Title", "Company Name"])
+
+        
+
 
