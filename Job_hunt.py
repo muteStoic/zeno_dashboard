@@ -127,4 +127,4 @@ extracted_data = {
 #####
 ##
 company_full_information = extracted_data
-st.write(company_full_information(1))
+st.write(company_full_information["Job Title"])
