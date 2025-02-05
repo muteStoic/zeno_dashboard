@@ -38,7 +38,7 @@ if st.button("Send Message"):
         response = client.chat.completions.create(
     model="gpt-4o-mini",
     messages=[
-        {"role": "user","content": [{"type": "text","text": "What is in this image?",},{"type": "image_url","image_url": {"url": f"data:image/jpg;base64,{image_base64}"},},],}],)
+        {"role": "user","content": [{"type": "text","text": "You will help me to read an image to extract important data from it. The data that i required is as follows (Job Title	Job Description	Key Activities	Company Name	URL link   	Company email	PIC email	Company information	Company website	Salary Range). Sources is the url link in the image.save the extracted data as extracted_data. I just need the code itself and nothing else. if there is no information just put in nil. Do not say anything else other than the requested information.",},{"type": "image_url","image_url": {"url": f"data:image/jpg;base64,{image_base64}"},},],}],)
         st.write(response)
 
 
