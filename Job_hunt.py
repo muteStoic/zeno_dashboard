@@ -198,30 +198,6 @@ st.button("upload image to sheet", on_click = add_image)
 
 
 
-@st.cache_data(ttl=3600)
-def load_image(uploaded_file):
-    if uploaded_file is not None:
-        st.write(uploaded_file)
-        try:
-            image = Image.open(uploaded_file)
-            return image
-        except Exception as e:
-            st.error(f"Error loading image: {e}")
-            return None
-    return None
-
-
-#uploaded_file1 = st.file_uploader("Choose a file")
-#if uploaded_file1 is not None:
-    # To read file as bytes:
-#    bytes_data = uploaded_file1.getvalue()
-    #st.write(bytes_data)
-
-    #dataframe = pd.DataFrame(uploaded_file1)
-    #st.write(dataframe)
-
-    #upload_url: "/_stcore/upload_file/29b2669b-cbba-4448-a030-709a273e4da2/463503d4-bb78-4035-98a7-ab369f0be6f5"
-
 
 # Cache image upload for 1 hour
 @st.cache_data(ttl=3600)
