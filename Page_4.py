@@ -33,7 +33,7 @@ def create_container(rows):
         with colyes:
             st.button("Move forward" , key = rows)
         with colno:
-            st.button("Rejected", key= rows)
+            st.button("Rejected", key= rows+1)
         #st.text_input("", key = rows)
 
     with col3:
