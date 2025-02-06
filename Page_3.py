@@ -21,10 +21,10 @@ for cont in range(max_row):
     
     container_test = st.container(border = True)
     container_test.title(df_job.at[cont,"Job Title"])
-    container_test.write("Company Name: " + df_job.at[cont,"Company Name"])
+    container_test.write("Company: " + df_job.at[cont,"Company Name"])
     container_test.write("Salary: " + df_job.at[cont, "Salary Range"])
     container_test.link_button("Go To Job", df_job.at[cont,"URL link"])
-    #container_test.checkbox("Application submitted")
+    container_test.checkbox("Application submitted")
     expander_section = container_test.expander("Job Description")
     expander_section.write(df_job.at[cont, "Job Description"])
 
