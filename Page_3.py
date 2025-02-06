@@ -17,7 +17,7 @@ st.write(df_job.shape[0])
 st.write(testloc)
 
 max_row = 3
-for cont in max_row:
+for cont in 3:
     x= 0
     st.write(x)
     x+= 1
