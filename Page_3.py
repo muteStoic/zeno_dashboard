@@ -20,7 +20,7 @@ max_row = df_job.shape[0]
 
 def create_container(rows):
     container_test = st.container(border = True)
-    container_test.write(bool(df_job.at[cont,"Checkmark"]))
+    #container_test.write(bool(df_job.at[cont,"Checkmark"]))
     container_test.title(df_job.at[cont,"Job Title"])
     container_test.write("Company: " + df_job.at[cont,"Company Name"])
     container_test.write("Salary: " + df_job.at[cont, "Salary Range"])
