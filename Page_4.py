@@ -15,7 +15,7 @@ df_job_show = conn.read(worksheet = "Sheet2", usecols = [0,3,12])
 
 
 
-data_edit = st.dataframe(df_job_show)
+#data_edit = st.dataframe(df_job_show)
 
 max_row = df_job.shape[0]
 
