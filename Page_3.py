@@ -18,13 +18,15 @@ st.write(testloc)###
 
 max_row = df_job.shape[0]
 for cont in range(max_row):
-    
+    def test():
+        container_test.write("complete")
+
     container_test = st.container(border = True)
     container_test.title(df_job.at[cont,"Job Title"])
     container_test.write("Company: " + df_job.at[cont,"Company Name"])
     container_test.write("Salary: " + df_job.at[cont, "Salary Range"])
     container_test.link_button("Go To Job", df_job.at[cont,"URL link"])
-    container_test.checkbox("Application submitted",value = bool(df_job.at[cont,"Checkmark"]), key = cont)
+    container_test.checkbox("Application submitted",on_change = test,value = bool(df_job.at[cont,"Checkmark"]), key = cont)
     expander_section = container_test.expander("Job Description")
     expander_section.write(df_job.at[cont, "Job Description"])
 
