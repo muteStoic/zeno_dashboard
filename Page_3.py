@@ -14,6 +14,8 @@ df_job_show = conn.read(worksheet = "Sheet2", usecols = [0,3,12])
 def update_sheet():
     conn.update(worksheet = "Sheet2", data = data_edit)
 
+st.button("Update sheet", on_click = update_sheet)
+
 data_edit = st.data_editor(df_job_show)
 
 max_row = df_job.shape[0]
