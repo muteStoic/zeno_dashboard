@@ -34,7 +34,7 @@ df = pd.DataFrame(data)
 row_to_move = df.loc[[2]]  # Select the row as a DataFrame
 remaining_rows = df.drop(2)  # Remove the selected row
 
-change_position = st.text_input("what position will it be", value = 3)
+change_position = st.text_input("what position will it be", value = "sd")
 st.button("update the order", on_click = rearrange)
 int_change_position = int(change_position)
 st.write(int_change_position)
