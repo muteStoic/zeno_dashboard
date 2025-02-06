@@ -16,11 +16,12 @@ testloc = df_job.at[1,"Job Title"]
 st.write(df_job.shape[0])
 st.write(testloc)
 
-max_row = 3
-for cont in 3:
+max_row = df_job.shape[0]
+for cont in range(max_row):
     x= 0
     st.write(x)
     x+= 1
+    st.write(cont)
 
 
 
