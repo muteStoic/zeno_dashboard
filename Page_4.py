@@ -21,7 +21,7 @@ max_row = df_job.shape[0]
 
 def create_container(rows):
     past_job_con = st.container(border = True)
-    col1, col2, col3 = past_job_con.columns([2,2,1], vertical_alignment= "center",horizontal_alignment = "center")
+    col1, col2, col3 = past_job_con.columns([2,2,1], vertical_alignment= "center")
 
     with col1 : 
         st.title(df_job.at[cont,"Job Title"])
