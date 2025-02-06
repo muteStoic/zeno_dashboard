@@ -27,9 +27,9 @@ for cont in range(max_row):
 
     if isinstance(checkfull, bool):
         if checkfull:
-            st.write("true")
+            print("nil")
         else:
-            st.write("false")
+            
             container_test = st.container(border = True)
             container_test.write(bool(df_job.at[cont,"Checkmark"]))
             container_test.title(df_job.at[cont,"Job Title"])
