@@ -12,9 +12,9 @@ df_job = conn.read(worksheet = "Sheet2")
 
 st.dataframe(df_job)
 
-testloc = df_job.at[1,"Job Title"]
-st.write(df_job.shape[0])
-st.write(testloc)
+testloc = df_job.at[1,"Job Title"]###
+st.write(df_job.shape[0])###
+st.write(testloc)###
 
 max_row = df_job.shape[0]
 for cont in range(max_row):
@@ -24,7 +24,7 @@ for cont in range(max_row):
     container_test.write("Company: " + df_job.at[cont,"Company Name"])
     container_test.write("Salary: " + df_job.at[cont, "Salary Range"])
     container_test.link_button("Go To Job", df_job.at[cont,"URL link"])
-    container_test.checkbox("Application submitted")
+    container_test.checkbox("Application submitted", key = cont)
     expander_section = container_test.expander("Job Description")
     expander_section.write(df_job.at[cont, "Job Description"])
 
