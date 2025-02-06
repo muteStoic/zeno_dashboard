@@ -75,6 +75,8 @@ def rearrange():
     df_job = pd.concat([row_to_move, remaining_rows], ignore_index=True)
     st.dataframe(df_job) 
 
+st.button("test", on_click = rearrange)
+
 
 st.title('Job hunting with AI')
 
