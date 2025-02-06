@@ -35,8 +35,8 @@ def create_container(rows):
         with st.popover("Accepted to next step"):
             st.write("You have been accepted. Write below their response")
             company_response = st.text_input("What they reply and what is the next step", key = "CompanyResponse"+str(rows))
-            sche_date = st.time_input("Scheduled Time",value = None)
-            sche_time = st.date_input("Schedule Date",value = None)
+            sche_date = st.time_input("Scheduled Time",value = None, key = "time"+str(rows))
+            sche_time = st.date_input("Schedule Date",value = None, key = "date"+str(rows))
 
         
             
