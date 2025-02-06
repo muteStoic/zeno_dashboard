@@ -19,10 +19,10 @@ st.write(testloc)###
 max_row = df_job.shape[0]
 for cont in range(max_row):
     def test():
-        df_job.at[cont,"URL link"] = True
+        df_job.at[cont,"Checkmark"] = True
 
     container_test = st.container(border = True)
-    container_test.write(df_job.at[cont,"URL link"])
+    container_test.write(df_job.at[cont,"Checkmark"])
     container_test.title(df_job.at[cont,"Job Title"])
     container_test.write("Company: " + df_job.at[cont,"Company Name"])
     container_test.write("Salary: " + df_job.at[cont, "Salary Range"])
