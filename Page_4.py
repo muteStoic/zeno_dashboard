@@ -31,9 +31,9 @@ def create_container(rows):
         st.write("Response from company")
         colyes, colno = st.columns(2)
         with colyes:
-            st.button("Move forward")
+            st.button("Move forward" , key = rows)
         with colno:
-            st.button("Rejected")
+            st.button("Rejected", key= rows)
         #st.text_input("", key = rows)
 
     with col3:
