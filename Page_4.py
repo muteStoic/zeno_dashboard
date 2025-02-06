@@ -24,7 +24,7 @@ def create_container(rows):
     col1, col2, col3 = past_job_con.columns([3,3,1])
 
     with col1 : 
-        st.write("Company: " + df_job.at[cont,"Company Name"])
+        st.title("Company: " + df_job.at[cont,"Company Name"])
 
     with col2 :
         st.write(df_job.at[cont,"Job Title"])
