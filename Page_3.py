@@ -30,7 +30,8 @@ for cont in range(max_row):
     container_test.link_button("Go To Job", df_job.at[cont,"URL link"])
     check = container_test.checkbox("Application submitted",value = bool(df_job.at[cont,"Checkmark"]), key = cont)
     if check:
-        container_test.write("complete")
+        df_job.at[cont,"Checkmark"] = True
+        st.dataframe(df_job)
     expander_section = container_test.expander("Job Description")
     expander_section.write(df_job.at[cont, "Job Description"])
 
