@@ -6,8 +6,9 @@ from streamlit_gsheets import GSheetsConnection
 st.cache_resource.clear()
 
 task_tracker = st.Page("Task_tracker.py", title = "Task Tracker")
-job_hunt_page = st.Page("Job_hunt.py", title = "Job hunting")
-page_3 = st.Page("Page_3.py", title = "Blank empty page")
+job_hunt_page = st.Page("Job_hunt.py", title = "Job hunt Add")
+page_3 = st.Page("Page_3.py", title = "Job Tracker")
+page_4 = st.Page("Page_4.py", title = "Past Job")
 
-pg = st.navigation([task_tracker ,job_hunt_page,page_3])
+pg = st.navigation([task_tracker ,job_hunt_page,page_3, page_4])
 pg.run()
