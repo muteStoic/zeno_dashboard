@@ -9,7 +9,7 @@ task_tracker = st.Page("Task_tracker.py", title = "Task Tracker")
 job_hunt_page = st.Page("Job_hunt.py", title = "Job hunt Add")
 page_3 = st.Page("Page_3.py", title = "Job Tracker")
 page_4 = st.Page("Page_4.py", title = "Past Job")
-page_5 = st.page("Page_5.py", title = "Placeholder")
+page_5 = st.Page("Page_5.py", title = "Placeholder")
 
 pg = st.navigation([task_tracker ,job_hunt_page,page_3, page_4, page_5])
 pg.run()
