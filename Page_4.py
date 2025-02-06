@@ -29,11 +29,11 @@ def create_container(rows):
 
     with col2 :
         st.write("Response from company")
-        colyes, colno = st.columns(2)
-        with colyes:
-            st.button("Move forward" , key = rows)
-        with colno:
-            st.button("Rejected", key= rows+1)
+        
+        st.button("Move forward" , key = rows)
+        st.button("Rejected", key= rows+1)
+        
+            
         #st.text_input("", key = rows)
 
     with col3:
