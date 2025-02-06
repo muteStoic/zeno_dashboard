@@ -23,7 +23,7 @@ for cont in range(max_row):
     container_test.title(df_job.at[cont,"Job Title"])
     container_test.write(df_job.at[cont,"Company Name"])
     container_test.write(df_job.at[cont,"Checkmark"])
-    container_test.button("Go To Link", on_click = df_job.at[cont,"URL link"])
+    container_test.link_button("Go To Link", on_click = df_job.at[cont,"URL link"])
 
 
 
