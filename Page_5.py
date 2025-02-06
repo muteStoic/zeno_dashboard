@@ -36,6 +36,8 @@ remaining_rows = df.drop(2)  # Remove the selected row
 
 change_position = st.text_input("what position will it be")
 st.button("update the order", on_click = rearrange)
+int_change_position = int(change_position)
+st.write("sdf")
 
 # Concatenate with the moved row at the top
 df = pd.concat([row_to_move, remaining_rows], ignore_index=True)
