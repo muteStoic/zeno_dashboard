@@ -20,6 +20,10 @@ max_row = df_job.shape[0]
 for cont in range(max_row):
     
     st.write(cont)
+    container_test = st.container(border = True)
+    container_test.write(df_job.at[cont,"Job Title"])
+    container_test.write(df_job.at[cont,"Company Name"])
+    container_test.write(df_job.at[cont,"Checkmark"])
 
 
 
