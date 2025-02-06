@@ -18,6 +18,24 @@ data_edit = st.data_editor(df_job_show)
 
 max_row = df_job.shape[0]
 
+def create_container(rows):
+    container_test = st.container(border = True)
+    container_test.write(bool(df_job.at[cont,"Checkmark"]))
+    container_test.title(df_job.at[cont,"Job Title"])
+    container_test.write("Company: " + df_job.at[cont,"Company Name"])
+    container_test.write("Salary: " + df_job.at[cont, "Salary Range"])
+    container_test.link_button("Go To Job", df_job.at[cont,"URL link"])
+    check = container_test.checkbox("Application submitted",value = bool(df_job.at[cont,"Checkmark"]), key = cont)
+    if check:
+        df_job.at[cont,"Checkmark"] = True
+        conn.update(worksheet ="Sheet2", data = df_job)
+                
+    expander_section = container_test.expander("Job Description")
+    expander_section.write(df_job.at[cont, "Job Description"])
+
+
+
+
 for cont in range(max_row):
     
     checkfull = bool(df_job.at[cont, "Checkmark"])
@@ -28,19 +46,7 @@ for cont in range(max_row):
         if checkfull:
             print("nil")
         else:
+            create_container(cont)
             
-            container_test = st.container(border = True)
-            container_test.write(bool(df_job.at[cont,"Checkmark"]))
-            container_test.title(df_job.at[cont,"Job Title"])
-            container_test.write("Company: " + df_job.at[cont,"Company Name"])
-            container_test.write("Salary: " + df_job.at[cont, "Salary Range"])
-            container_test.link_button("Go To Job", df_job.at[cont,"URL link"])
-            check = container_test.checkbox("Application submitted",value = bool(df_job.at[cont,"Checkmark"]), key = cont)
-            if check:
-                df_job.at[cont,"Checkmark"] = True
-                conn.update(worksheet ="Sheet2", data = df_job)
-                
-            expander_section = container_test.expander("Job Description")
-            expander_section.write(df_job.at[cont, "Job Description"])
         
 
