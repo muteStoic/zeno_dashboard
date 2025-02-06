@@ -21,6 +21,10 @@ for cont in range(max_row):
     #def test():
     #    df_job.at[cont,"Checkmark"] = True
     #    st.dataframe(df_job)
+    checkfull = bool(df_job.at[cont, "Checkmark"])
+
+    if checkfull():
+        st.write("dfd")
 
     container_test = st.container(border = True)
     container_test.write(bool(df_job.at[cont,"Checkmark"]))
