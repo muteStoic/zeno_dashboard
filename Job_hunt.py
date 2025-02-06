@@ -68,6 +68,13 @@ def add_task():
         #create an else statement if there is no data detected it will pop-up an error message that will tell the user to ensure to input all of the information necessary.
 
 
+def rearrange():
+    row_to_move = df_job.loc[[2]]  # Select the row as a DataFrame
+    remaining_rows = df_job.drop(2)  # Remove the selected row
+    print("def")
+    df_job = pd.concat([row_to_move, remaining_rows], ignore_index=True)
+    st.dataframe(df_job) 
+
 
 st.title('Job hunting with AI')
 
