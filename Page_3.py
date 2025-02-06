@@ -25,7 +25,7 @@ for cont in range(max_row):
     st.write(checkfull)
 
 
-    if checkfull():
+    if isinstance(checkfull, bool):
         st.write("dfd")
 
     container_test = st.container(border = True)
