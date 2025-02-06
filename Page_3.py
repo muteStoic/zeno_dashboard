@@ -33,7 +33,7 @@ def create_container(rows):
     if check:
         df_job.at[cont,"Checkmark"] = True
         conn.update(worksheet ="Sheet2", data = df_job)
-        st.rerun
+        st.rerun()
                 
     expander_section = container_test.expander("Job Description")
     expander_section.write(df_job.at[cont, "Job Description"])
