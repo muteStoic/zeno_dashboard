@@ -16,7 +16,12 @@ df_job = conn.read(worksheet = "Sheet2")
 df_job_show = conn.read(worksheet = "Sheet2", usecols = [0,3,12])
 
 def rearrange(change_position):
+    int_change_position = int(change_position)
+    row_to_move = df.loc[[int_change_position]]  # Select the row as a DataFrame
+    remaining_rows = df.drop(int_change_position)  # Remove the selected row
     print("def")
+    df = pd.concat([row_to_move, remaining_rows], ignore_index=True)
+    st.dataframe(df)    
 
 
 # Sample DataFrame
