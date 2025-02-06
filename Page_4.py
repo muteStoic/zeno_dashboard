@@ -56,8 +56,9 @@ for cont in range(max_row):
     if isinstance(checkfull, bool):
         if checkfull:
             print("nil")
-        else:
             create_container(cont)
+        else:
+            print("nil")
             
         
 
