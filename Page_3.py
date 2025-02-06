@@ -18,9 +18,7 @@ st.write(testloc)
 
 max_row = df_job.shape[0]
 for cont in range(max_row):
-    x= 0
-    st.write(x)
-    x+= 1
+    
     st.write(cont)
 
 
