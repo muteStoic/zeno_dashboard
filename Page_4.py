@@ -29,7 +29,7 @@ def create_container(rows):
 
     with col2 :
         st.write("Response from company")
-        st.text_input("")
+        st.text_input("", key = rows)
 
     with col3:
         st.checkbox("Not sent", key = rows)
