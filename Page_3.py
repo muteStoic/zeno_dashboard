@@ -12,6 +12,10 @@ df_job = conn.read(worksheet = "Sheet2")
 
 st.dataframe(df_job)
 
+st.write(df_job("Job Title"))
+
+
+
 
 container1 = st.container(border = True)
 container1.write("testing")
