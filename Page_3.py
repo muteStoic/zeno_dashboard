@@ -12,8 +12,7 @@ df_job = conn.read(worksheet = "Sheet2")
 
 st.dataframe(df_job)
 
-st.write(df_job("Job Title"))
-
+st.write(df_job[0]
 
 
 
