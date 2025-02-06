@@ -11,7 +11,7 @@ conn = st.connection("google_service_account", type = GSheetsConnection)
 df_job = conn.read(worksheet = "Sheet2")
 df_job_show = conn.read(worksheet = "Sheet2", usecols = [0,3,12])
 
-st.dataframe(df_job_show)
+st.dataframe(df_job)
 
 max_row = df_job.shape[0]
 for cont in range(max_row):
