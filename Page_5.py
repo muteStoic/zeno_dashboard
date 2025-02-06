@@ -16,7 +16,7 @@ df_job = conn.read(worksheet = "Sheet2")
 df_job_show = conn.read(worksheet = "Sheet2", usecols = [0,3,12])
 
 def rearrange():
-    int_change_position = int(change_position)
+    
     st.write("sdf")
     row_to_move = df.loc[[int_change_position]]  # Select the row as a DataFrame
     remaining_rows = df.drop(int_change_position)  # Remove the selected row
@@ -37,7 +37,7 @@ remaining_rows = df.drop(2)  # Remove the selected row
 change_position = st.text_input("what position will it be", value = 3)
 st.button("update the order", on_click = rearrange)
 int_change_position = int(change_position)
-st.write(change_position)
+st.write(int_change_position)
 
 # Concatenate with the moved row at the top
 df = pd.concat([row_to_move, remaining_rows], ignore_index=True)
