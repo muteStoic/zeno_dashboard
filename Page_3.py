@@ -20,6 +20,7 @@ max_row = df_job.shape[0]
 for cont in range(max_row):
     def test():
         df_job.at[cont,"Checkmark"] = True
+        st.dataframe(df_job)
 
     container_test = st.container(border = True)
     container_test.write(bool(df_job.at[cont,"Checkmark"]))
