@@ -22,6 +22,8 @@ for cont in range(max_row):
     #    df_job.at[cont,"Checkmark"] = True
     #    st.dataframe(df_job)
     checkfull = bool(df_job.at[cont, "Checkmark"])
+    st.write(checkfull)
+
 
     if checkfull():
         st.write("dfd")
