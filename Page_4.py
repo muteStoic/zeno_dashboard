@@ -37,7 +37,7 @@ def create_container(rows):
 
 
 past_job_con = st.container(border = True)
-col1, col2, col3 = past_job_con.columns(3)
+col1, col2, col3 = past_job_con.columns([3,3,1])
 
 with col1 : 
     st.write("col1")
