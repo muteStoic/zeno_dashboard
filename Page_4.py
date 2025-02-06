@@ -32,6 +32,12 @@ def create_container(rows):
         
         st.button("Move forward" , key = "buttonyes"+str(rows) , use_container_width = True)
         st.button("Rejected", key= "buttonno"+str(rows) , use_container_width = True)
+        with st.popover("Accepted to next step"):
+            st.write("You have been accepted. Write below their response")
+            company_response = st.textinput("What they reply and what is the next step")
+            sche_date = st.time_input()
+            sche_time = st.date_input()
+
         
             
         #st.text_input("", key = rows)
