@@ -37,7 +37,7 @@ def create_container(rows):
         #st.text_input("", key = rows)
 
     with col3:
-        st.checkbox("Not sent", key = rows)
+        st.checkbox("Not sent", key = rows+2)
 
 
 
