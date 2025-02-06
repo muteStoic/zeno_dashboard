@@ -30,8 +30,8 @@ def create_container(rows):
     with col2 :
         st.write("Response from company")
         
-        st.button("Move forward" , key = rows)
-        st.button("Rejected", key= rows+1)
+        st.button("Move forward" , key = rows , use_container_width = True)
+        st.button("Rejected", key= rows+1 , use_container_width = True)
         
             
         #st.text_input("", key = rows)
