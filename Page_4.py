@@ -21,13 +21,14 @@ max_row = df_job.shape[0]
 
 def create_container(rows):
     past_job_con = st.container(border = True)
-    col1, col2, col3 = past_job_con.columns([3,3,1])
+    col1, col2, col3 = past_job_con.columns([3,2,1])
 
     with col1 : 
-        st.title("Company: " + df_job.at[cont,"Company Name"])
+        st.title(df_job.at[cont,"Job Title"])
+        st.write("Company: " + df_job.at[cont,"Company Name"])
 
     with col2 :
-        st.write(df_job.at[cont,"Job Title"])
+        st.title(df_job.at[cont,"Job Title"])
 
     with col3:
         st.checkbox("Not sent", key = rows)
