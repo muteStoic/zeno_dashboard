@@ -43,7 +43,11 @@ def create_container(rows):
         #st.text_input("", key = rows)
 
     with col3:
-        st.checkbox("Not sent", key = rows+2)
+        check = st.checkbox("Not sent", key = rows+2)
+        if check:
+            df_job.at[cont,"Checkmark"] = False
+            conn.update(worksheet ="Sheet2", data = df_job)
+        
 
 
 
