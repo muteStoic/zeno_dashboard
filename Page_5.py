@@ -15,6 +15,14 @@ conn = st.connection("google_service_account", type = GSheetsConnection)
 df_job = conn.read(worksheet = "Sheet2")
 df_job_show = conn.read(worksheet = "Sheet2", usecols = [0,3,12])
 
+  
+
+
+# Sample DataFrame
+data = {'Name': ['Alice', 'Bob', 'Charlie', 'David'],
+        'Score': [85, 90, 78, 88]}
+df = pd.DataFrame(data)
+
 def rearrange():
     
     st.write("sdf")
@@ -22,13 +30,7 @@ def rearrange():
     remaining_rows = df.drop(int_change_position)  # Remove the selected row
     print("def")
     df = pd.concat([row_to_move, remaining_rows], ignore_index=True)
-    st.dataframe(df)    
-
-
-# Sample DataFrame
-data = {'Name': ['Alice', 'Bob', 'Charlie', 'David'],
-        'Score': [85, 90, 78, 88]}
-df = pd.DataFrame(data)
+    st.dataframe(df)  
 
 # Move row index 2 ('Charlie') to the top
 row_to_move = df.loc[[2]]  # Select the row as a DataFrame
