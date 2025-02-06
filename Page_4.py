@@ -30,7 +30,7 @@ def create_container(rows):
         st.write("col2")
 
     with col3:
-        st.checkbox("Not sent", key = "test")
+        st.checkbox("Not sent", key = rows)
 
 
 past_job_con = st.container(border = True)
