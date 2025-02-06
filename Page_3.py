@@ -19,7 +19,7 @@ st.write(testloc)###
 max_row = df_job.shape[0]
 for cont in range(max_row):
     def test():
-        container_test.write("complete")
+        st.write("complete")
 
     container_test = st.container(border = True)
     container_test.title(df_job.at[cont,"Job Title"])
