@@ -15,7 +15,7 @@ conn = st.connection("google_service_account", type = GSheetsConnection)
 df_job = conn.read(worksheet = "Sheet2")
 df_job_show = conn.read(worksheet = "Sheet2", usecols = [0,3,12])
 
-def rearrange(change_position):
+def rearrange():
     int_change_position = int(change_position)
     st.write("sdf")
     row_to_move = df.loc[[int_change_position]]  # Select the row as a DataFrame
