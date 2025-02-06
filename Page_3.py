@@ -13,6 +13,7 @@ df_job = conn.read(worksheet = "Sheet2")
 st.dataframe(df_job)
 
 testloc = df_job.at[1,"Job Title"]
+st.write(df_job.shape[0])
 st.write(testloc)
 
 
