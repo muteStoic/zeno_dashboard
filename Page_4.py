@@ -21,7 +21,7 @@ max_row = df_job.shape[0]
 
 def create_container(rows):
     past_job_con = st.container(border = True)
-    col1, col2, col3 = past_job_con.columns([2,2,1])
+    col1, col2, col3 = past_job_con.columns([2,2,1], vertical_alignment= "center")
 
     with col1 : 
         st.title(df_job.at[cont,"Job Title"])
@@ -34,18 +34,6 @@ def create_container(rows):
     with col3:
         st.checkbox("Not sent", key = rows)
 
-
-past_job_con = st.container(border = True)
-col1, col2, col3 = past_job_con.columns([3,3,1])
-
-with col1 : 
-    st.write("col1")
-
-with col2 :
-    st.write("col2")
-
-with col3:
-    st.checkbox("Not sent", key = "test")
 
 
 for cont in range(max_row):
