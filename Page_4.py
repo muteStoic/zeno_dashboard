@@ -37,13 +37,16 @@ def create_container(rows):
 
 
 past_job_con = st.container(border = True)
-col1, col2 = past_job_con.columns(2)
+col1, col2, col3 = past_job_con.columns(3)
 
 with col1 : 
     st.write("col1")
 
 with col2 :
     st.write("col2")
+
+with col3:
+    st.checkbox("Not sent", key = "test")
 
 
 for cont in range(max_row):
