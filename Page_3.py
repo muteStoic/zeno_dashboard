@@ -16,7 +16,7 @@ max_row = df_job.shape[0]
 for cont in range(max_row):
     
     checkfull = bool(df_job.at[cont, "Checkmark"])
-    st.write(checkfull)
+    
 
 
     if isinstance(checkfull, bool):
