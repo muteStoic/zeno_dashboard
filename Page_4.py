@@ -28,7 +28,7 @@ def create_container(rows):
         st.write("Company: " + df_job.at[cont,"Company Name"])
 
     with col2 :
-        st.title(df_job.at[cont,"Job Title"])
+        st.write("Company: " + df_job.at[cont,"Company Name"])
 
     with col3:
         st.checkbox("Not sent", key = rows)
