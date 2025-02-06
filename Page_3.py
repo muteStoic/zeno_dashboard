@@ -14,7 +14,7 @@ df_job_show = conn.read(worksheet = "Sheet2", usecols = [0,3,12])
 st.dataframe(df_job_show)
 
 max_row = df_job.shape[0]
-st.write(max_row)
+
 for cont in range(max_row):
     
     checkfull = bool(df_job.at[cont, "Checkmark"])
