@@ -15,19 +15,13 @@ conn = st.connection("google_service_account", type = GSheetsConnection)
 df_job = conn.read(worksheet = "Sheet2")
 df_job_show = conn.read(worksheet = "Sheet2", usecols = [0,3,12], ttl=None)
 
+
+
 def refresh_data():
     df_job = conn.read(worksheet = "Sheet2")
     df_job_show = conn.read(worksheet = "Sheet2", usecols = [0,3,12])
 
 
-
-
-#def update_sheet():
-#    conn.update(worksheet = "Sheet2", data = data_edit)
-
-#st.button("Update sheet", on_click = update_sheet)
-
-#data_edit = st.data_editor(df_job_show)
 
 max_row = df_job.shape[0]
 
@@ -43,8 +37,7 @@ def create_container(rows):
     if check:
         df_job.at[cont,"Checkmark"] = True
         conn.update(worksheet ="Sheet2", data = df_job)
-        
-                
+                      
     expander_section = container_test.expander("Job Description")
     expander_section.write(df_job.at[cont, "Job Description"])
     expander_section = container_test.expander("Requirement")
@@ -52,13 +45,10 @@ def create_container(rows):
 
 
 
-
 for cont in range(max_row):
     
     checkfull = bool(df_job.at[cont, "Checkmark"])
     
-
-
     if isinstance(checkfull, bool):
         if checkfull:
             print("nil")
