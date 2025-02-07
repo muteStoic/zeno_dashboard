@@ -17,6 +17,7 @@ df_job_show = conn.read(worksheet = "Sheet2", usecols = [0,3,12])
 
 def refresh_data():
     df_job = conn.read(worksheet = "Sheet2")
+    df_job_show = conn.read(worksheet = "Sheet2", usecols = [0,3,12])
 
 with st.sidebar:
     
