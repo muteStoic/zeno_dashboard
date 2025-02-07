@@ -140,8 +140,10 @@ if st.button("Send Message"):
     com_web = company_full_information["Company website"]
     salary = company_full_information["Salary Range"]
     requirement = company_full_information["Requirement"]
+    remark_data = ""
+    checkmark_data = False
 
-    job_data = pd.DataFrame([[job_title, job_desc, key_act, com_name, url_job, com_email, pic_email, com_inf, com_web, salary, requirement
+    job_data = pd.DataFrame([[job_title, job_desc, key_act, com_name, url_job, com_email, pic_email, com_inf, com_web, salary,remark_data, checkmark_data, requirement
 ]], columns=["Job Title","Job Description", "Key Activities", "Company Name", "URL link", "Company email", "PIC email", "Company information", "Company website", "Salary Range","Remark", "Checkmark", "Requirement"
 ])
 #"Job Title","Job Description", "Key Activities", "Company Name", "URL link", "Company email", "PIC email", "Company information", "Company website", "Salary Range"
