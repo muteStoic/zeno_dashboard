@@ -20,10 +20,6 @@ def refresh_data():
     df_job_show = conn.read(worksheet = "Sheet2", usecols = [0,3,12])
 
 
-with st.sidebar:
-    
-    restart_button = st.button("refresh", on_click = refresh_data)
-
 
 
 #def update_sheet():
