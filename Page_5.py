@@ -38,7 +38,7 @@ def rearrange(x):
 #remaining_rows = df.drop(2)  # Remove the selected row
 
 with st.form("update data"):
-    change_position = st.text_input("what position will it be", value = 2)
+    change_position = st.text_input("what position will it be", value = 1)
     int_change_position = int(change_position)
     st.write(int_change_position)
     st.form_submit_button("update the order", on_click = rearrange(int_change_position))
