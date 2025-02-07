@@ -5,6 +5,8 @@ from openai import Client
 from streamlit_gsheets import GSheetsConnection
 
 
+
+
 #//initialize the connection that is refered in the secrets toml
 st.cache_resource.clear()
 conn = st.connection("google_service_account", type = GSheetsConnection)
@@ -13,9 +15,14 @@ conn = st.connection("google_service_account", type = GSheetsConnection)
 df_job = conn.read(worksheet = "Sheet2")
 df_job_show = conn.read(worksheet = "Sheet2", usecols = [0,3,12])
 
+def refresh_data():
+    df_job = conn.read(worksheet = "Sheet2")
+
 with st.sidebar:
     
-    restart_button = st.button("restart2")
+    restart_button = st.button("refresh", on_click = refresh_data)
+
+
 
 #def update_sheet():
 #    conn.update(worksheet = "Sheet2", data = data_edit)
