@@ -11,5 +11,10 @@ page_3 = st.Page("Page_3.py", title = "Job Tracker")
 page_4 = st.Page("Page_4.py", title = "Past Job")
 page_5 = st.Page("Page_5.py", title = "Placeholder")
 
-pg = st.navigation([task_tracker ,job_hunt_page,page_3, page_4, page_5])
+def restart():
+    print("")
+
+restart_button = st.button("restart", on_click = restart)
+
+pg = st.navigation([task_tracker ,job_hunt_page,page_3, page_4, page_5],restart_button)
 pg.run()
