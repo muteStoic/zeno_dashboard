@@ -13,7 +13,7 @@ page_5 = st.Page("Page_5.py", title = "Placeholder")
 
 def restart():  
     st.cache_resource.clear()
-    st.rerun()
+    st.rerun(scope = "app")
 
 #restart_button = st.button("restart", on_click = restart)
 
