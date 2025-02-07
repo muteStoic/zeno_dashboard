@@ -37,6 +37,8 @@ def create_container(rows):
                 
     expander_section = container_test.expander("Job Description")
     expander_section.write(df_job.at[cont, "Job Description"])
+    expander_section = container_test.expander("Requirement")
+    expander_section.write(df_job.at[cont, "Requirement"])
 
 
 
