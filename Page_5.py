@@ -24,6 +24,7 @@ data = {'Name': ['Alice', 'Bob', 'Charlie', 'David'],
 df = pd.DataFrame(data)
 
 def rearrange(x):
+    df = pd.DataFrame(data)
     
     st.write("sdf")
     row_to_move = df.loc[[x]]  # Select the row as a DataFrame
