@@ -32,11 +32,11 @@ def create_container(rows):
     col1, col2 = st.columns(2)
     with col1:
         st.write("Company: " + df_job.at[cont,"Company Name"])
-        container_test.write("Salary: " + df_job.at[cont, "Salary Range"])
+        st.write("Salary: " + df_job.at[cont, "Salary Range"])
 
 
     with col2:
-        container_test.link_button("Go To Job", df_job.at[cont,"URL link"])
+        st.link_button("Go To Job", df_job.at[cont,"URL link"])
 
 
 
