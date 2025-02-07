@@ -34,8 +34,8 @@ def rearrange(x):
     st.dataframe(df)  
 
 # Move row index 2 ('Charlie') to the top
-row_to_move = df.loc[[2]]  # Select the row as a DataFrame
-remaining_rows = df.drop(2)  # Remove the selected row
+#row_to_move = df.loc[[2]]  # Select the row as a DataFrame
+#remaining_rows = df.drop(2)  # Remove the selected row
 
 change_position = st.text_input("what position will it be", value = 3)
 int_change_position = int(change_position)
@@ -44,6 +44,6 @@ st.button("update the order", on_click = rearrange(int_change_position))
 
 
 # Concatenate with the moved row at the top
-df = pd.concat([row_to_move, remaining_rows], ignore_index=True)
-st.dataframe(df)        
+#df = pd.concat([row_to_move, remaining_rows], ignore_index=True)
+#st.dataframe(df)        
 
