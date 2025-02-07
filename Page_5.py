@@ -23,11 +23,11 @@ data = {'Name': ['Alice', 'Bob', 'Charlie', 'David'],
         'Score': [85, 90, 78, 88]}
 df = pd.DataFrame(data)
 
-def rearrange():
+def rearrange(x):
     
     st.write("sdf")
-    row_to_move = df.loc[[int_change_position]]  # Select the row as a DataFrame
-    remaining_rows = df.drop(int_change_position)  # Remove the selected row
+    row_to_move = df.loc[[x]]  # Select the row as a DataFrame
+    remaining_rows = df.drop(x)  # Remove the selected row
     print("def")
     df = pd.concat([row_to_move, remaining_rows], ignore_index=True)
     st.dataframe(df)  
@@ -37,9 +37,10 @@ row_to_move = df.loc[[2]]  # Select the row as a DataFrame
 remaining_rows = df.drop(2)  # Remove the selected row
 
 change_position = st.text_input("what position will it be", value = 3)
-st.button("update the order", on_click = rearrange)
 int_change_position = int(change_position)
 st.write(int_change_position)
+st.button("update the order", on_click = rearrange(int_change_position))
+
 
 # Concatenate with the moved row at the top
 df = pd.concat([row_to_move, remaining_rows], ignore_index=True)
