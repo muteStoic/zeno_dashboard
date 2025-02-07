@@ -118,7 +118,7 @@ if st.button("Send Message"):
         response = client.chat.completions.create(
     model="gpt-4o-mini",
     messages=[
-        {"role": "user","content": [{"type": "text","text": "You will help me to read an image to extract important data from it. The data that i required is as follows (Job Title	Job Description	Key Activities	Company Name	URL link   	Company email	PIC email	Company information	Company website	Salary Range). Sources is the url link in the image.save the extracted data as extracted_data. I just need the code itself and nothing else. if there is no information just put in 'nil'. Do not say anything else other than the requested information.",},{"type": "image_url","image_url": {"url": f"data:image/jpg;base64,{image_base64}"},},],}],)
+        {"role": "user","content": [{"type": "text","text": "You will help me to read an image to extract important data from it. The data that i required is as follows (Job Title	Job Description	Key Activities	Company Name	URL link   	Company email	PIC email	Company information	Company website	Salary Range   Requirement). Sources is the url link in the image. Put the requirement as is that is shown in the image into the data.save the extracted data as extracted_data. I just need the code itself and nothing else. if there is no information just put in 'nil'. Do not say anything else other than the requested information.",},{"type": "image_url","image_url": {"url": f"data:image/jpg;base64,{image_base64}"},},],}],)
         st.write(response.choices[0].message.content)
 
     company_full_information1 = response.choices[0].message.content#change this data to response.choices[0].message.content for full running build
@@ -139,9 +139,10 @@ if st.button("Send Message"):
     com_inf = company_full_information["Company information"]
     com_web = company_full_information["Company website"]
     salary = company_full_information["Salary Range"]
+    requirement = company_full_information["Requirement"]
 
-    job_data = pd.DataFrame([[job_title, job_desc, key_act, com_name, url_job, com_email, pic_email, com_inf, com_web, salary
-]], columns=["Job Title","Job Description", "Key Activities", "Company Name", "URL link", "Company email", "PIC email", "Company information", "Company website", "Salary Range"
+    job_data = pd.DataFrame([[job_title, job_desc, key_act, com_name, url_job, com_email, pic_email, com_inf, com_web, salary, requirement
+]], columns=["Job Title","Job Description", "Key Activities", "Company Name", "URL link", "Company email", "PIC email", "Company information", "Company website", "Salary Range","Remark", "Checkmark", "Requirement"
 ])
 #"Job Title","Job Description", "Key Activities", "Company Name", "URL link", "Company email", "PIC email", "Company information", "Company website", "Salary Range"
 #job_title, job_desc, key_act, com_name, url_job, com_email, pic_email, com_inf, com_web, salary
