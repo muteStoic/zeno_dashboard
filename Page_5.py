@@ -31,7 +31,7 @@ def rearrange(x):
     remaining_rows = df.drop(x)  # Remove the selected row
     print("def")
     df = pd.concat([row_to_move, remaining_rows], ignore_index=True)
-    st.dataframe(df)  
+    #st.dataframe(df)  
 
 # Move row index 2 ('Charlie') to the top
 #row_to_move = df.loc[[2]]  # Select the row as a DataFrame
