@@ -31,13 +31,13 @@ def rearrange(x):
     remaining_rows = df.drop(x)  # Remove the selected row
     print("def")
     df = pd.concat([row_to_move, remaining_rows], ignore_index=True)
-    #st.dataframe(df)  
+    st.dataframe(df)  
 
 # Move row index 2 ('Charlie') to the top
 #row_to_move = df.loc[[2]]  # Select the row as a DataFrame
 #remaining_rows = df.drop(2)  # Remove the selected row
 
-change_position = st.text_input("what position will it be", value = 3)
+change_position = st.text_input("what position will it be", value = 2)
 int_change_position = int(change_position)
 st.write(int_change_position)
 st.button("update the order", on_click = rearrange(int_change_position))
