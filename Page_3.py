@@ -13,6 +13,10 @@ conn = st.connection("google_service_account", type = GSheetsConnection)
 df_job = conn.read(worksheet = "Sheet2")
 df_job_show = conn.read(worksheet = "Sheet2", usecols = [0,3,12])
 
+with st.sidebar:
+    
+    restart_button = st.button("restart2")
+
 #def update_sheet():
 #    conn.update(worksheet = "Sheet2", data = data_edit)
 
@@ -25,7 +29,7 @@ max_row = df_job.shape[0]
 def create_container(rows):
     container_test = st.container(border = True)
     #container_test.write(bool(df_job.at[cont,"Checkmark"]))
-    
+
     container_test.title(df_job.at[cont,"Job Title"])
     container_test.write("Company: " + df_job.at[cont,"Company Name"])
     container_test.write("Salary: " + df_job.at[cont, "Salary Range"])
