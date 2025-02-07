@@ -41,7 +41,7 @@ with st.form("update data"):
     change_position = st.text_input("what position will it be", value = 2)
     int_change_position = int(change_position)
     st.write(int_change_position)
-    st.button("update the order", on_click = rearrange(int_change_position))
+    st.form_submit_button("update the order", on_click = rearrange(int_change_position))
 
 
 
