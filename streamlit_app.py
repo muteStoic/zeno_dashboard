@@ -11,8 +11,9 @@ page_3 = st.Page("Page_3.py", title = "Job Tracker")
 page_4 = st.Page("Page_4.py", title = "Past Job")
 page_5 = st.Page("Page_5.py", title = "Placeholder")
 
-def restart():
-    st.rerun("app")
+def restart():  
+    st.cache_resource.clear()
+    st.rerun()
 
 #restart_button = st.button("restart", on_click = restart)
 
