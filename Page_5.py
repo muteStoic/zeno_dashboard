@@ -37,10 +37,14 @@ def rearrange(x):
 #row_to_move = df.loc[[2]]  # Select the row as a DataFrame
 #remaining_rows = df.drop(2)  # Remove the selected row
 
-change_position = st.text_input("what position will it be", value = 2)
-int_change_position = int(change_position)
-st.write(int_change_position)
-st.button("update the order", on_click = rearrange(int_change_position))
+with st.form("update data"):
+    change_position = st.text_input("what position will it be", value = 2)
+    int_change_position = int(change_position)
+    st.write(int_change_position)
+    st.button("update the order", on_click = rearrange(int_change_position))
+
+
+
 
 
 # Concatenate with the moved row at the top
