@@ -28,11 +28,20 @@ max_row = df_job.shape[0]
 def create_container(rows):
     container_test = st.container(border = True)
     #container_test.write(bool(df_job.at[cont,"Checkmark"]))
-
     container_test.title(df_job.at[cont,"Job Title"])
-    container_test.write("Company: " + df_job.at[cont,"Company Name"])
-    container_test.write("Salary: " + df_job.at[cont, "Salary Range"])
-    container_test.link_button("Go To Job", df_job.at[cont,"URL link"])
+    col1, col2 = st.columns(2)
+    with col1:
+        container_test.write("Company: " + df_job.at[cont,"Company Name"])
+        container_test.write("Salary: " + df_job.at[cont, "Salary Range"])
+
+    with col2:
+        container_test.link_button("Go To Job", df_job.at[cont,"URL link"])
+
+
+
+    
+    
+    
     check = container_test.checkbox("Application submitted",value = bool(df_job.at[cont,"Checkmark"]), key = cont)
     if check:
         df_job.at[cont,"Checkmark"] = True
