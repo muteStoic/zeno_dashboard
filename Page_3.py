@@ -37,6 +37,7 @@ def create_container(rows):
 
     with col2:
         st.link_button("Go To Job", df_job.at[cont,"URL link"])
+        st.write("Saved Date: "+ df_job.at[cont,"Time"])
 
 
 
