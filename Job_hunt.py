@@ -8,6 +8,9 @@ import base64
 from PIL import Image
 import os
 import ast
+from datetime import datetime
+
+
 
 
 assistandid = "asst_Tot8FMaAwWRmOAng4D6z3x66"
@@ -142,9 +145,10 @@ if st.button("Send Message"):
     requirement = company_full_information["Requirement"]
     remark_data = ""
     checkmark_data = False
+    time = datetime.now().strftime(" %d-%m-%Y ")
 
-    job_data = pd.DataFrame([[job_title, job_desc, key_act, com_name, url_job, com_email, pic_email, com_inf, com_web, salary,remark_data, checkmark_data, requirement
-]], columns=["Job Title","Job Description", "Key Activities", "Company Name", "URL link", "Company email", "PIC email", "Company information", "Company website", "Salary Range","Remark", "Checkmark", "Requirement"
+    job_data = pd.DataFrame([[job_title, job_desc, key_act, com_name, url_job, com_email, pic_email, com_inf, com_web, salary,remark_data, checkmark_data, requirement, time
+]], columns=["Job Title","Job Description", "Key Activities", "Company Name", "URL link", "Company email", "PIC email", "Company information", "Company website", "Salary Range","Remark", "Checkmark", "Requirement", "Time"
 ])
 #"Job Title","Job Description", "Key Activities", "Company Name", "URL link", "Company email", "PIC email", "Company information", "Company website", "Salary Range"
 #job_title, job_desc, key_act, com_name, url_job, com_email, pic_email, com_inf, com_web, salary
