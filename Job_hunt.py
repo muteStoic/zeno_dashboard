@@ -103,6 +103,7 @@ st.title("OpenAI Image and Text Messaging App")
 uploaded_file = st.file_uploader("Upload an image", type=["jpg", "png"])
 
 if st.button("Send Message"):
+    st.cache_resource.clear()
     thread = client.beta.threads.create()
     st.session_state.threadid = thread.id
 
