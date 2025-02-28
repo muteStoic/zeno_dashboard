@@ -44,6 +44,12 @@ with st.form("update data"):
     st.form_submit_button("update the order", on_click = rearrange(int_change_position))
 
 
+newName = st.text_input("name")
+if st.button("Run"):
+    newdata = {'Name': [newName],'Score':[10]}
+    datainsert = pd.DataFrame(newdata)
+    st.dataframe(datainsert)
+
 
 data2 = {'Name': ['Alice', 'Bob', 'Charlie', 'David'],
         'Score': [85, 90, 78, 88]}
