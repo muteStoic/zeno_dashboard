@@ -28,6 +28,7 @@ conn = st.connection("google_service_account", type = GSheetsConnection)
 
 #//create variable that capture the information in the first sheet of the gsheetinto variable df
 df_job = conn.read(worksheet = "Sheet2", ttl = None)
+st.session_state.fulljobdata = df_job
 
 
 #//function to insert new data into the spreadsheet that is link to the "update button"
@@ -155,8 +156,8 @@ if st.button("Send Message"):
 #job_title, job_desc, key_act, com_name, url_job, com_email, pic_email, com_inf, com_web, salary
 #job_data = pd.DataFrame([[job_title,job_desc,key_act,com_name,url_job,com_name, url_job,com_email,pic_email,com_inf,com_web,salary]], columns=["Job Title", "Job Description","Key Activit","Company Name", "URL link", "Company email", "PIC Email","Company information", "Company website", "Salary Range"])
     st.data_editor(job_data)
-    full_job = pd.concat([df_job,job_data])
-    st.session_state.fulljobdata = full_job
+    full_job = pd.concat([st.session_state.fulljobdata,job_data])
+    #st.session_state.fulljobdata = full_job
     st.dataframe(st.session_state.fulljobdata)    
     conn.update(worksheet ="Sheet2", data = full_job)  
     
