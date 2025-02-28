@@ -40,8 +40,7 @@ def get_new_data_conn():
 
 def update_to_new_cell(y):
     conn3 = st.connection("google_service_account", type = GSheetsConnection)
-    utnc = conn3.read(worksheet ="Sheet2", ttl = None)
-    utnc_df = pd.DataFrame(utnc)
+    
     conn3.update(worksheet ="Sheet2", data = y)
 
 
@@ -55,6 +54,12 @@ st.title("OpenAI Image and Text Messaging App")
 #st.dataframe(df_job)
 # File uploader for the image
 uploaded_file = st.file_uploader("Upload an image", type=["jpg", "png"])
+
+
+if st.button("Push Data To Excel"):
+    update_to_new_cell(st.session_state.tempData)
+
+
 
 if st.button("Send Message"):
     
