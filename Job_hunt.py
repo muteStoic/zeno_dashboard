@@ -98,7 +98,7 @@ with st.form("update data"):
 
 st.title("OpenAI Image and Text Messaging App")
 
-#st.dataframe(df_job)
+st.dataframe(df_job)
 # File uploader for the image
 uploaded_file = st.file_uploader("Upload an image", type=["jpg", "png"])
 
