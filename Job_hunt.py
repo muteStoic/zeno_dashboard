@@ -155,10 +155,10 @@ if st.button("Send Message"):
 #job_title, job_desc, key_act, com_name, url_job, com_email, pic_email, com_inf, com_web, salary
 #job_data = pd.DataFrame([[job_title,job_desc,key_act,com_name,url_job,com_name, url_job,com_email,pic_email,com_inf,com_web,salary]], columns=["Job Title", "Job Description","Key Activit","Company Name", "URL link", "Company email", "PIC Email","Company information", "Company website", "Salary Range"])
     st.data_editor(job_data)
-    df_job = pd.concat([df_job,job_data])
-    #st.session_state.fulljobdata = full_job
-    st.dataframe(df_job)    
-    conn.update(worksheet ="Sheet2", data = df_job)  
+    full_job = pd.concat([df_job,job_data])
+    st.session_state.fulljobdata = full_job
+    st.dataframe(full_job)    
+    conn.update(worksheet ="Sheet2", data = full_job)  
     df_job = conn.read(worksheet = "Sheet2", ttl = None)
 
 
