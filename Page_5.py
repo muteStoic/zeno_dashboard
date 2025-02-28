@@ -12,8 +12,10 @@ st.cache_resource.clear()
 conn = st.connection("google_service_account", type = GSheetsConnection)
 
 #//create variable that capture the information in the first sheet of the gsheetinto variable df
-df_job = conn.read(worksheet = "Sheet2")
-df_job_show = conn.read(worksheet = "Sheet2", usecols = [0,3,12])
+df_job = conn.read(worksheet = "Sheet3")
+df_job_show = conn.read(worksheet = "Sheet3")
+df_pd = pd.DataFrame(df_job_show)
+st.dataframe(df_pd)
 
 
 data2 = {'Name': ['Alice', 'Bob', 'Charlie', 'David'],
