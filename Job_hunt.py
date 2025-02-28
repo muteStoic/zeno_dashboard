@@ -159,6 +159,9 @@ if st.button("Send Message"):
     #st.session_state.fulljobdata = full_job
     st.dataframe(full_job)    
     conn.update(worksheet ="Sheet2", data = full_job)  
+    conn = st.connection("google_service_account", type = GSheetsConnection)
+
+    #//create variable that capture the information in the first sheet of the gsheetinto variable df
     df_job = conn.read(worksheet = "Sheet2", ttl = None)
 
 
