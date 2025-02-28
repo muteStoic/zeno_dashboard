@@ -159,7 +159,7 @@ if st.button("Send Message"):
     st.session_state.fulljobdata = full_job
     st.dataframe(full_job)   
     df_job = full_job   
-    conn.update(worksheet ="Sheet2", data = full_job)  
+    conn.update(worksheet ="Sheet2", data = df_job)  
 
 
 
