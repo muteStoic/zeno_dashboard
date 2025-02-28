@@ -31,6 +31,22 @@ df_job = conn.read(worksheet = "Sheet2", ttl = None)
 st.session_state.fulljobdata = df_job
 
 
+def call_con():
+    conn3 = st.connection("google_service_account", type = GSheetsConnection)
+    df_job_show = conn3.read(worksheet = "Sheet2", ttl = None)
+    df_pd = pd.DataFrame(df_job_show)
+    st.dataframe(df_pd)
+    
+    return df_pd
+
+def update_con(x):
+    conn2 = st.connection("google_service_account", type = GSheetsConnection)
+    df_job_show = conn2.read(worksheet = "Sheet2", ttl = None)
+    df_pd = pd.DataFrame(df_job_show)
+    conn2.update(worksheet = "Sheet3", data = x)
+
+
+
 def get_connection():
     conn = st.connection("google_service_account", type = GSheetsConnection)
     df_job = conn.read(worksheet = "Sheet2", ttl = None)
@@ -228,23 +244,10 @@ if st.button("Send Message2"):
 
     
 
-    if st.session_state.runframe == False:
-        newframe = job_data
-        #st.data_editor(new_con)
-        full_job = pd.concat([df_job,job_data])
-        #st.session_state.fulljobdata = full_job
-        st.dataframe(full_job)    
-        conn.update(worksheet ="Sheet2", data = full_job) 
-        st.session_state.runframe = True
-
-        
-    if st.session_state.runframe == True:
-        newframe = pd.concat([newframe,job_data])
-        st.dataframe(newframe)
-        conn.update(worksheet ="Sheet2", data = newframe)
-        st.session_state.runframe = False  
-
-    st.write(st.session_state.runframe)
+    new_call = call_con()
+    new_df = pd.concat([new_call,job_data])
+    update_con(new_df)
+    st.dataframe(new_df)
 
 
 
