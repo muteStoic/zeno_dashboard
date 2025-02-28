@@ -35,6 +35,8 @@ def get_connection():
     conn = st.connection("google_service_account", type = GSheetsConnection)
     df_job = conn.read(worksheet = "Sheet2", ttl = None)
 
+    return df_job
+
 
 
 #//function to insert new data into the spreadsheet that is link to the "update button"
