@@ -53,7 +53,7 @@ st.title("OpenAI Image and Text Messaging App")
 
 #st.dataframe(df_job)
 # File uploader for the image
-uploaded_file = st.file_uploader("Upload an image", type=["jpg", "png"])
+uploaded_file = st.file_uploader("Upload an image", type=["jpg", "png"], accept_multiple_files=True)
 
 
 if st.button("Push Data To Excel"):
@@ -129,58 +129,60 @@ if st.button("Send Message"):
 
 
 if st.button("Send Message2"):
-    
-    thread = client.beta.threads.create()
-    st.session_state.threadid = thread.id
 
-
-
-    if not uploaded_file:
-        st.error("Please upload an image.")
-    else:
-        # Read the image content and encode it to base64
-        image_bytes = uploaded_file.read()
-        image_base64 = base64.b64encode(image_bytes).decode("utf-8")
+    for uploaded_files in uploaded_file:
         
+        thread = client.beta.threads.create()
+        st.session_state.threadid = thread.id
+
+
+
+        if not uploaded_file:
+            st.error("Please upload an image.")
+        else:
+            # Read the image content and encode it to base64
+            image_bytes = uploaded_file.read()
+            image_base64 = base64.b64encode(image_bytes).decode("utf-8")
+            
+            
+            response = client.chat.completions.create(
+        model="gpt-4o-mini",
+        messages=[
+            {"role": "user","content": [{"type": "text","text": "You will help me to read an image to extract important data from it. The data that i required is as follows (Job Title	Job Description	Key Activities	Company Name	URL link   	Company email	PIC email	Company information	Company website	Salary Range   Requirement). Sources is the url link in the image. Put the requirement as is that is shown in the image into the data, the requirement data dont put it as an array, just separate it with a dot.save the extracted data as extracted_data. I just need the code itself and nothing else. if there is no information just put in 'nil'. Do not say anything else other than the requested information.",},{"type": "image_url","image_url": {"url": f"data:image/jpg;base64,{image_base64}"},},],}],)
+            st.write(response.choices[0].message.content)
+
+        company_full_information1 = response.choices[0].message.content#change this data to response.choices[0].message.content for full running build
+        #print(company_full_information1[27:-3])
+        company_full_information2 = company_full_information1[27:-3]
         
-        response = client.chat.completions.create(
-    model="gpt-4o-mini",
-    messages=[
-        {"role": "user","content": [{"type": "text","text": "You will help me to read an image to extract important data from it. The data that i required is as follows (Job Title	Job Description	Key Activities	Company Name	URL link   	Company email	PIC email	Company information	Company website	Salary Range   Requirement). Sources is the url link in the image. Put the requirement as is that is shown in the image into the data, the requirement data dont put it as an array, just separate it with a dot.save the extracted data as extracted_data. I just need the code itself and nothing else. if there is no information just put in 'nil'. Do not say anything else other than the requested information.",},{"type": "image_url","image_url": {"url": f"data:image/jpg;base64,{image_base64}"},},],}],)
-        st.write(response.choices[0].message.content)
+        company_full_information = ast.literal_eval(company_full_information2)
+        st.write(company_full_information)
 
-    company_full_information1 = response.choices[0].message.content#change this data to response.choices[0].message.content for full running build
-    #print(company_full_information1[27:-3])
-    company_full_information2 = company_full_information1[27:-3]
+        
+        job_title = company_full_information["Job Title"]
+        job_desc = company_full_information["Job Description"]
+        key_act = company_full_information["Key Activities"]
+        com_name = company_full_information["Company Name"]
+        url_job = company_full_information["URL link"]
+        com_email = company_full_information["Company email"]
+        pic_email = company_full_information["PIC email"]
+        com_inf = company_full_information["Company information"]
+        com_web = company_full_information["Company website"]
+        salary = company_full_information["Salary Range"]
+        requirement = company_full_information["Requirement"]
+        remark_data = ""
+        checkmark_data = False
+        time = datetime.now().strftime(" %d-%m-%Y ")
+
+        job_data = pd.DataFrame([[job_title, job_desc, key_act, com_name, url_job, com_email, pic_email, com_inf, com_web, salary,remark_data, checkmark_data, requirement, time
+    ]], columns=["Job Title","Job Description", "Key Activities", "Company Name", "URL link", "Company email", "PIC email", "Company information", "Company website", "Salary Range","Remark", "Checkmark", "Requirement", "Time"
+    ])
     
-    company_full_information = ast.literal_eval(company_full_information2)
-    st.write(company_full_information)
 
-    
-    job_title = company_full_information["Job Title"]
-    job_desc = company_full_information["Job Description"]
-    key_act = company_full_information["Key Activities"]
-    com_name = company_full_information["Company Name"]
-    url_job = company_full_information["URL link"]
-    com_email = company_full_information["Company email"]
-    pic_email = company_full_information["PIC email"]
-    com_inf = company_full_information["Company information"]
-    com_web = company_full_information["Company website"]
-    salary = company_full_information["Salary Range"]
-    requirement = company_full_information["Requirement"]
-    remark_data = ""
-    checkmark_data = False
-    time = datetime.now().strftime(" %d-%m-%Y ")
-
-    job_data = pd.DataFrame([[job_title, job_desc, key_act, com_name, url_job, com_email, pic_email, com_inf, com_web, salary,remark_data, checkmark_data, requirement, time
-]], columns=["Job Title","Job Description", "Key Activities", "Company Name", "URL link", "Company email", "PIC email", "Company information", "Company website", "Salary Range","Remark", "Checkmark", "Requirement", "Time"
-])
-  
-
-    #wee2 = get_new_data_conn()
-    st.session_state.tempData = pd.concat([st.session_state.tempData, job_data])
-    #update_to_new_cell(full_df)
-    st.dataframe(st.session_state.tempData)
+        #wee2 = get_new_data_conn()
+        st.session_state.tempData = pd.concat([st.session_state.tempData, job_data])
+        #update_to_new_cell(full_df)
+        st.dataframe(st.session_state.tempData)
 
     
 
