@@ -25,9 +25,9 @@ def get_data():
     conn = st.connection("google_service_account", type = GSheetsConnection)
     basedata = conn.read(worksheet = "Sheet2", ttl = None)
     base_data_df = pd.DataFrame(basedata)
-    st.dataframe(base_data_df)
+    #st.dataframe(base_data_df)
     st.session_state.tempData = base_data_df
-    st.dataframe(st.session_state.tempData)
+    #st.dataframe(st.session_state.tempData)
 
 
 def get_new_data_conn():
@@ -85,7 +85,7 @@ if st.button("Send Message"):
         st.write(response.choices[0].message.content)
 
     company_full_information1 = response.choices[0].message.content#change this data to response.choices[0].message.content for full running build
-    print(company_full_information1[27:-3])
+    #print(company_full_information1[27:-3])
     company_full_information2 = company_full_information1[27:-3]
     
     company_full_information = ast.literal_eval(company_full_information2)
@@ -150,7 +150,7 @@ if st.button("Send Message2"):
         st.write(response.choices[0].message.content)
 
     company_full_information1 = response.choices[0].message.content#change this data to response.choices[0].message.content for full running build
-    print(company_full_information1[27:-3])
+    #print(company_full_information1[27:-3])
     company_full_information2 = company_full_information1[27:-3]
     
     company_full_information = ast.literal_eval(company_full_information2)
@@ -177,7 +177,7 @@ if st.button("Send Message2"):
 ])
   
 
-    wee2 = get_new_data_conn()
+    #wee2 = get_new_data_conn()
     st.session_state.tempData = pd.concat([st.session_state.tempData, job_data])
     #update_to_new_cell(full_df)
     st.dataframe(st.session_state.tempData)
