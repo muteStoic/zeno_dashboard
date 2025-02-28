@@ -137,11 +137,11 @@ if st.button("Send Message2"):
 
 
 
-        if not uploaded_file:
+        if not uploaded_files:
             st.error("Please upload an image.")
         else:
             # Read the image content and encode it to base64
-            image_bytes = uploaded_file.read()
+            image_bytes = uploaded_files.read()
             image_base64 = base64.b64encode(image_bytes).decode("utf-8")
             
             
