@@ -40,10 +40,10 @@ def call_con():
     return df_pd
 
 def update_con(x):
-    conn2 = st.connection("google_service_account", type = GSheetsConnection)
-    df_job_show = conn2.read(worksheet = "Sheet2", ttl = None)
+    conn4 = st.connection("google_service_account", type = GSheetsConnection)
+    df_job_show = conn4.read(worksheet = "Sheet2", ttl = None)
     df_pd = pd.DataFrame(df_job_show)
-    conn2.update(worksheet = "Sheet3", data = x)
+    conn4.update(worksheet = "Sheet3", data = x)
 
 
 
