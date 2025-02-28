@@ -245,6 +245,9 @@ if st.button("Send Message2"):
     full_df = pd.concat([wee2, job_data])
     update_to_new_cell(full_df)
 
+    st.cache_resource.clear()
+
+
 
     
 
