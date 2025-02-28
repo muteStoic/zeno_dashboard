@@ -43,7 +43,7 @@ def update_con(x):
     conn4 = st.connection("google_service_account", type = GSheetsConnection)
     df_job_show = conn4.read(worksheet = "Sheet2", ttl = None)
     df_pd = pd.DataFrame(df_job_show)
-    conn4.update(worksheet = "Sheet3", data = x)
+    conn4.update(worksheet = "Sheet2", data = x)
 
 
 
