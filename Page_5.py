@@ -45,7 +45,10 @@ with st.form("update data"):
 
 
 
-
+data2 = {'Name': ['Alice', 'Bob', 'Charlie', 'David'],
+        'Score': [85, 90, 78, 88]}
+df2 = pd.DataFrame(data2)
+st.dataframe(df2)
 
 # Concatenate with the moved row at the top
 #df = pd.concat([row_to_move, remaining_rows], ignore_index=True)
