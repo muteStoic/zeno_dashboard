@@ -41,8 +41,6 @@ def call_con():
 
 def update_con(x):
     conn4 = st.connection("google_service_account", type = GSheetsConnection)
-    df_job_show = conn4.read(worksheet = "Sheet2", ttl = None)
-    df_pd = pd.DataFrame(df_job_show)
     conn4.update(worksheet = "Sheet2", data = x)
 
 
@@ -246,8 +244,9 @@ if st.button("Send Message2"):
 
     new_call = call_con()
     new_df = pd.concat([new_call,job_data])
-    update_con(new_df)
     st.dataframe(new_df)
+    update_con(new_df)
+    
 
 
 
