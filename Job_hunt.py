@@ -170,7 +170,7 @@ if st.button("Send Message"):
     conn.update(worksheet ="Sheet2", data = full_job)  
     
 
-
+runframe = False
 if st.button("Send Message2"):
     
     thread = client.beta.threads.create()
@@ -223,14 +223,28 @@ if st.button("Send Message2"):
 #"Job Title","Job Description", "Key Activities", "Company Name", "URL link", "Company email", "PIC email", "Company information", "Company website", "Salary Range"
 #job_title, job_desc, key_act, com_name, url_job, com_email, pic_email, com_inf, com_web, salary
 #job_data = pd.DataFrame([[job_title,job_desc,key_act,com_name,url_job,com_name, url_job,com_email,pic_email,com_inf,com_web,salary]], columns=["Job Title", "Job Description","Key Activit","Company Name", "URL link", "Company email", "PIC Email","Company information", "Company website", "Salary Range"])
-    new_con = get_connection()
+    #new_con = get_connection()
     
+
     
-    #st.data_editor(new_con)
-    full_job = pd.concat([new_con,job_data])
-    #st.session_state.fulljobdata = full_job
-    st.dataframe(full_job)    
-    conn.update(worksheet ="Sheet2", data = full_job)  
+
+    if runframe == False:
+        newframe = job_data
+        #st.data_editor(new_con)
+        full_job = pd.concat([df_job,job_data])
+        #st.session_state.fulljobdata = full_job
+        st.dataframe(full_job)    
+        conn.update(worksheet ="Sheet2", data = full_job) 
+        runframe = True 
+        
+    if runframe == True:
+        newframe = pd.concat([newframe,job_data])
+        st.dataframe(newframe)
+        conn.update(worksheet ="Sheet2", data = newframe)
+        runframe = False  
+
+    
+
 
 
 
