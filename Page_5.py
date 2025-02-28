@@ -52,7 +52,7 @@ if st.button("Run"):
     newdata = {'Name': [newName],'Score':[10]}
     datainsert = pd.DataFrame(newdata)
     st.dataframe(datainsert)
-    fgh = pd.concat([datainsert,data2])
+    fgh = pd.concat([data2,data2])
     st.dataframe(fgh)
 
 
