@@ -21,6 +21,12 @@ if "threadid" not in st.session_state:
 
 client = openai
 
+def get_data():
+    conn = st.connection("google_service_account", type = GSheetsConnection)
+    basedata = conn.read(worksheet = "Sheet2", ttl = None)
+    base_data_df = pd.DataFrame(basedata)
+    st.dataframe(base_data_df)
+
 
 def get_new_data_conn():
     conn2 = st.connection("google_service_account", type = GSheetsConnection)
@@ -39,7 +45,8 @@ def update_to_new_cell(y):
 
 
 
-
+if st.button("get data"):
+    get_data()
 
 st.title("OpenAI Image and Text Messaging App")
 
