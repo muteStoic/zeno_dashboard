@@ -22,6 +22,14 @@ def call_con():
     
     return df_pd
 
+def update_con(x):
+    conn2 = st.connection("google_service_account", type = GSheetsConnection)
+    df_job = conn2.read(worksheet = "Sheet3")
+    df_job_show = conn2.read(worksheet = "Sheet3")
+    df_pd = pd.DataFrame(df_job_show)
+    conn2.update(worksheet = "Sheet3", data = x)
+    
+
 
 data2 = {'Name': ['Alice', 'Bob', 'Charlie', 'David'],
         'Score': [85, 90, 78, 88]}
@@ -61,6 +69,10 @@ if st.button("Run"):
     st.dataframe(datainsert)
     wee = call_con()
     df = pd.concat([wee,datainsert])
+    update_con(df)
+
+
+    #conn.update(worksheet ="Sheet2", data = full_job)  
 
     st.dataframe(df)
 
