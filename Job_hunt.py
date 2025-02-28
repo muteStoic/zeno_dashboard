@@ -26,6 +26,8 @@ def get_data():
     basedata = conn.read(worksheet = "Sheet2", ttl = None)
     base_data_df = pd.DataFrame(basedata)
     st.dataframe(base_data_df)
+    st.session_state.tempData = base_data_df
+    st.dataframe(st.session_state.tempData)
 
 
 def get_new_data_conn():
@@ -171,10 +173,11 @@ if st.button("Send Message2"):
   
 
     wee2 = get_new_data_conn()
-    full_df = pd.concat([wee2, job_data])
-    update_to_new_cell(full_df)
+    st.session_state.tempData = pd.concat([st.session_state.tempData, job_data])
+    #update_to_new_cell(full_df)
+    st.dataframe(st.session_state.tempData)
 
-    st.cache_resource.clear()
+    
 
 
 
