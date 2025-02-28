@@ -20,15 +20,7 @@ if "threadid" not in st.session_state:
 
 
 client = openai
-#//remove all the browser cache
-#st.cache_resource.clear()
 
-#//initialize the connection that is refered in the secrets toml
-#conn = st.connection("google_service_account", type = GSheetsConnection)
-
-#//create variable that capture the information in the first sheet of the gsheetinto variable df
-#df_job = conn.read(worksheet = "Sheet2", ttl = None)
-#st.session_state.fulljobdata = df_job
 
 def get_new_data_conn():
     conn2 = st.connection("google_service_account", type = GSheetsConnection)
@@ -45,12 +37,6 @@ def update_to_new_cell(y):
     conn3.update(worksheet ="Sheet2", data = y)
 
 
-
-def get_connection():
-    conn = st.connection("google_service_account", type = GSheetsConnection)
-    df_job = conn.read(worksheet = "Sheet2", ttl = None)
-
-    return df_job
 
 
 
@@ -120,14 +106,19 @@ if st.button("Send Message"):
     #conn.update(worksheet ="Sheet2", data = full_job)  
     
 
-st.session_state.runframe = False
+
+
+
+
+
+
+
+
 if st.button("Send Message2"):
     
     thread = client.beta.threads.create()
     st.session_state.threadid = thread.id
 
-
-    
 
 
     if not uploaded_file:
@@ -170,11 +161,7 @@ if st.button("Send Message2"):
     job_data = pd.DataFrame([[job_title, job_desc, key_act, com_name, url_job, com_email, pic_email, com_inf, com_web, salary,remark_data, checkmark_data, requirement, time
 ]], columns=["Job Title","Job Description", "Key Activities", "Company Name", "URL link", "Company email", "PIC email", "Company information", "Company website", "Salary Range","Remark", "Checkmark", "Requirement", "Time"
 ])
-#"Job Title","Job Description", "Key Activities", "Company Name", "URL link", "Company email", "PIC email", "Company information", "Company website", "Salary Range"
-#job_title, job_desc, key_act, com_name, url_job, com_email, pic_email, com_inf, com_web, salary
-#job_data = pd.DataFrame([[job_title,job_desc,key_act,com_name,url_job,com_name, url_job,com_email,pic_email,com_inf,com_web,salary]], columns=["Job Title", "Job Description","Key Activit","Company Name", "URL link", "Company email", "PIC Email","Company information", "Company website", "Salary Range"])
-    #new_con = get_connection()
-    
+  
 
     wee2 = get_new_data_conn()
     full_df = pd.concat([wee2, job_data])
