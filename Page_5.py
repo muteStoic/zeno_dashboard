@@ -9,14 +9,14 @@ import pandas as pd
 
 #//initialize the connection that is refered in the secrets toml
 st.cache_resource.clear()
-conn = st.connection("google_service_account", type = GSheetsConnection)
+
 
 #//create variable that capture the information in the first sheet of the gsheetinto variable df
 
 def call_con():
-
-    df_job = conn.read(worksheet = "Sheet3")
-    df_job_show = conn.read(worksheet = "Sheet3")
+    conn = st.connection("google_service_account", type = GSheetsConnection)
+    df_job = conn.read(worksheet = "Sheet3", ttl = None)
+    df_job_show = conn.read(worksheet = "Sheet3", ttl = None)
     df_pd = pd.DataFrame(df_job_show)
     st.dataframe(df_pd)
     
@@ -24,7 +24,6 @@ def call_con():
 
 def update_con(x):
     conn2 = st.connection("google_service_account", type = GSheetsConnection)
-    df_job = conn2.read(worksheet = "Sheet3")
     df_job_show = conn2.read(worksheet = "Sheet3")
     df_pd = pd.DataFrame(df_job_show)
     conn2.update(worksheet = "Sheet3", data = x)
@@ -78,7 +77,7 @@ if st.button("Run"):
 
 
 
-st.dataframe(df2)
+#st.dataframe(df2)
 
 # Concatenate with the moved row at the top
 #df = pd.concat([row_to_move, remaining_rows], ignore_index=True)
