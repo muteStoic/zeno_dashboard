@@ -30,7 +30,19 @@ conn = st.connection("google_service_account", type = GSheetsConnection)
 df_job = conn.read(worksheet = "Sheet2", ttl = None)
 st.session_state.fulljobdata = df_job
 
+def get_new_data_conn():
+    conn2 = st.connection("google_service_account", type = GSheetsConnection)
+    gndt = conn2.read(worksheet = "Sheet2", ttl = None)
+    gndt_df = pd.DataFrame(gndt)
+    st.dataframe(gndt_df)
 
+    return gndt_df
+
+def update_to_new_cell(y):
+    conn3 = st.connection("google_service_account", type = GSheetsConnection)
+    utnc = conn3.read(worksheet ="Sheet2", ttl = None)
+    utnc_df = pd.DataFrame(utnc)
+    conn3.update(worksheet ="Sheet2", data = y)
 
 
 
@@ -229,7 +241,9 @@ if st.button("Send Message2"):
     #new_con = get_connection()
     
 
-    
+    wee2 = get_new_data_conn()
+    full_df = pd.concat([wee2, job_data])
+    update_to_new_cell(full_df)
 
 
     
