@@ -238,7 +238,7 @@ if st.button("Send Message2"):
         st.session_state.runframe = True
 
         
-    if rst.session_state.runframe == True:
+    if st.session_state.runframe == True:
         newframe = pd.concat([newframe,job_data])
         st.dataframe(newframe)
         conn.update(worksheet ="Sheet2", data = newframe)
