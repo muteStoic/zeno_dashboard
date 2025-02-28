@@ -12,10 +12,15 @@ st.cache_resource.clear()
 conn = st.connection("google_service_account", type = GSheetsConnection)
 
 #//create variable that capture the information in the first sheet of the gsheetinto variable df
-df_job = conn.read(worksheet = "Sheet3")
-df_job_show = conn.read(worksheet = "Sheet3")
-df_pd = pd.DataFrame(df_job_show)
-st.dataframe(df_pd)
+
+def call_con():
+
+    df_job = conn.read(worksheet = "Sheet3")
+    df_job_show = conn.read(worksheet = "Sheet3")
+    df_pd = pd.DataFrame(df_job_show)
+    st.dataframe(df_pd)
+    
+    return df_pd
 
 
 data2 = {'Name': ['Alice', 'Bob', 'Charlie', 'David'],
@@ -54,7 +59,8 @@ if st.button("Run"):
     newdata = {'Name': [newName],'Score':[10]}
     datainsert = pd.DataFrame(newdata)
     st.dataframe(datainsert)
-    df = pd.concat([df_pd,datainsert])
+    wee = call_con()
+    df = pd.concat([wee,datainsert])
 
     st.dataframe(df)
 
