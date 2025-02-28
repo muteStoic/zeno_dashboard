@@ -27,7 +27,7 @@ client = openai
 conn = st.connection("google_service_account", type = GSheetsConnection)
 
 #//create variable that capture the information in the first sheet of the gsheetinto variable df
-df_job = conn.read(worksheet = "Sheet2")
+df_job = conn.read(worksheet = "Sheet2", ttl = None)
 
 
 #//function to insert new data into the spreadsheet that is link to the "update button"
@@ -103,7 +103,7 @@ st.title("OpenAI Image and Text Messaging App")
 uploaded_file = st.file_uploader("Upload an image", type=["jpg", "png"])
 
 if st.button("Send Message"):
-    st.cache_resource.clear()
+    
     thread = client.beta.threads.create()
     st.session_state.threadid = thread.id
 
@@ -160,7 +160,7 @@ if st.button("Send Message"):
     st.dataframe(full_job)   
     df_job = full_job   
     conn.update(worksheet ="Sheet2", data = df_job)  
-    st.rerun
+    st.cache_resource.clear()
 
 
 
