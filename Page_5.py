@@ -15,7 +15,10 @@ conn = st.connection("google_service_account", type = GSheetsConnection)
 df_job = conn.read(worksheet = "Sheet2")
 df_job_show = conn.read(worksheet = "Sheet2", usecols = [0,3,12])
 
-  
+
+data2 = {'Name': ['Alice', 'Bob', 'Charlie', 'David'],
+        'Score': [85, 90, 78, 88]}
+df2 = pd.DataFrame(data2)
 
 
 # Sample DataFrame
@@ -49,11 +52,11 @@ if st.button("Run"):
     newdata = {'Name': [newName],'Score':[10]}
     datainsert = pd.DataFrame(newdata)
     st.dataframe(datainsert)
+    fgh = pd.concat([datainsert,data2])
+    st.dataframe(fgh)
 
 
-data2 = {'Name': ['Alice', 'Bob', 'Charlie', 'David'],
-        'Score': [85, 90, 78, 88]}
-df2 = pd.DataFrame(data2)
+
 st.dataframe(df2)
 
 # Concatenate with the moved row at the top
