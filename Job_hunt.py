@@ -157,9 +157,8 @@ if st.button("Send Message"):
     st.data_editor(job_data)
     full_job = pd.concat([df_job,job_data])
     st.session_state.fulljobdata = full_job
-    st.dataframe(full_job)   
-    df_job = full_job   
-    conn.update(worksheet ="Sheet2", data = df_job)  
+    st.dataframe(full_job)    
+    conn.update(worksheet ="Sheet2", data = full_job)  
     st.cache_resource.clear()
     df_job = conn.read(worksheet = "Sheet2", ttl = None)
 
