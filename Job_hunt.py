@@ -33,15 +33,15 @@ st.session_state.fulljobdata = df_job
 
 def call_con():
     conn3 = st.connection("google_service_account", type = GSheetsConnection)
-    df_job_show = conn3.read(worksheet = "Sheet2", ttl = None)
-    df_pd = pd.DataFrame(df_job_show)
-    st.dataframe(df_pd)
+    df_job_show12 = conn3.read(worksheet = "Sheet2", ttl = None)
+    df_pd2 = pd.DataFrame(df_job_show12)
+    st.dataframe(df_pd2)
     
-    return df_pd
+    return df_pd2
 
-def update_con(x):
+def update_con(t):
     conn4 = st.connection("google_service_account", type = GSheetsConnection)
-    conn4.update(worksheet = "Sheet2", data = x)
+    conn4.update(worksheet = "Sheet2", data = t)
 
 
 
