@@ -160,6 +160,7 @@ if st.button("Send Message"):
     st.dataframe(full_job)    
     conn.update(worksheet ="Sheet2", data = full_job)  
     df_job = conn.read(worksheet = "Sheet2", ttl = None)
+    st.rerun()
 
 
 
