@@ -24,11 +24,11 @@ client = openai
 #st.cache_resource.clear()
 
 #//initialize the connection that is refered in the secrets toml
-conn = st.connection("google_service_account", type = GSheetsConnection)
+#conn = st.connection("google_service_account", type = GSheetsConnection)
 
 #//create variable that capture the information in the first sheet of the gsheetinto variable df
-df_job = conn.read(worksheet = "Sheet2", ttl = None)
-st.session_state.fulljobdata = df_job
+#df_job = conn.read(worksheet = "Sheet2", ttl = None)
+#st.session_state.fulljobdata = df_job
 
 def get_new_data_conn():
     conn2 = st.connection("google_service_account", type = GSheetsConnection)
@@ -115,14 +115,14 @@ with st.form("update data"):
     st.form_submit_button("add", on_click = add_task)
 
     #//using the streamlit data editor to displa the information from the sheet that is stored in "df" variable. dont know what is the key and num_rows is about.
-    data_edit = st.data_editor(df_job, use_container_width = True, key="my_key", num_rows = "dynamic" )
+    #data_edit = st.data_editor(df_job, use_container_width = True, key="my_key", num_rows = "dynamic" )
 
 ###
 
 
 st.title("OpenAI Image and Text Messaging App")
 
-st.dataframe(df_job)
+#st.dataframe(df_job)
 # File uploader for the image
 uploaded_file = st.file_uploader("Upload an image", type=["jpg", "png"])
 
@@ -182,7 +182,7 @@ if st.button("Send Message"):
     full_job = pd.concat([st.session_state.fulljobdata,job_data])
     #st.session_state.fulljobdata = full_job
     st.dataframe(st.session_state.fulljobdata)    
-    conn.update(worksheet ="Sheet2", data = full_job)  
+    #conn.update(worksheet ="Sheet2", data = full_job)  
     
 
 st.session_state.runframe = False
