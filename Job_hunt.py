@@ -170,7 +170,7 @@ if st.button("Send Message"):
     conn.update(worksheet ="Sheet2", data = full_job)  
     
 
-runframe = False
+st.session_state.runframe = False
 if st.button("Send Message2"):
     
     thread = client.beta.threads.create()
@@ -228,22 +228,23 @@ if st.button("Send Message2"):
 
     
 
-    if runframe == False:
+    if st.session_state.runframe == False:
         newframe = job_data
         #st.data_editor(new_con)
         full_job = pd.concat([df_job,job_data])
         #st.session_state.fulljobdata = full_job
         st.dataframe(full_job)    
         conn.update(worksheet ="Sheet2", data = full_job) 
-        runframe = True 
+        st.session_state.runframe = True
+
         
-    if runframe == True:
+    if rst.session_state.runframe == True:
         newframe = pd.concat([newframe,job_data])
         st.dataframe(newframe)
         conn.update(worksheet ="Sheet2", data = newframe)
-        runframe = False  
+        st.session_state.runframe = False  
 
-    
+    st.write(st.session_state.runframe)
 
 
 
