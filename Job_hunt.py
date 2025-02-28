@@ -161,6 +161,7 @@ if st.button("Send Message"):
     df_job = full_job   
     conn.update(worksheet ="Sheet2", data = df_job)  
     st.cache_resource.clear()
+    df_job = conn.read(worksheet = "Sheet2", ttl = None)
 
 
 
