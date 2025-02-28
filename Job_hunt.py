@@ -11,7 +11,7 @@ import ast
 from datetime import datetime
 
 
-
+st.cache_resource.clear()
 
 assistandid = "asst_Tot8FMaAwWRmOAng4D6z3x66"
 # Initialize session state for the thread ID if not already set
